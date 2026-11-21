@@ -1,0 +1,1 @@
+{"name":"Negen · Sudoku","short_name":"Negen","start_url":"./","scope":"./","display":"fullscreen","display_override":["fullscreen","standalone"],"orientation":"portrait","background_color":"#e8ecf3","theme_color":"#1d3c9e","icons":[{"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"},{"src":"icon-192.png","sizes":"192x192","type":"image/png"}]}
