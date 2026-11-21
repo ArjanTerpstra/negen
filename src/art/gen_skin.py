@@ -181,9 +181,19 @@ body::before{{display:none}}
 
 /* sheets: glazed plaques with a painted double rule */
 .sheet{{background-color:var(--surface);box-shadow:0 0 0 1px var(--tile-edge),var(--shadow-lg)}}
-.sheet::before{{content:"";position:absolute;inset:7px;border-radius:20px;border:1px solid color-mix(in srgb,var(--line-strong) 22%,transparent);box-shadow:inset 0 0 0 3px var(--surface),inset 0 0 0 4px color-mix(in srgb,var(--line-strong) 10%,transparent);pointer-events:none}}
+.sheet{{outline:1px solid color-mix(in srgb,var(--line-strong) 24%,transparent);outline-offset:-8px}}
 [data-theme="dark"] .sheet{{background-color:#0f2263}}
 .scrim{{background:rgba(8,22,80,.45)}}
+/* new-game sheet: level choices and week strip as glazed tiles */
+.lvlbtn{{background-color:var(--surface);background-image:{kc_l[0]},{kc_l[1]},{kc_l[2]},{kc_l[3]},var(--glaze);background-size:14px 14px,14px 14px,14px 14px,14px 14px,auto;background-position:5px 5px,calc(100% - 5px) 5px,5px calc(100% - 5px),calc(100% - 5px) calc(100% - 5px),0 0;background-repeat:no-repeat;box-shadow:0 0 0 1px var(--tile-edge),0 3px 0 var(--tile-edge),0 12px 20px -14px rgba(15,36,99,.5);padding-left:20px}}
+.lvlbtn .pips i{{border-radius:2px 2px 3px 3px;background:color-mix(in srgb,var(--accent) 14%,transparent)}}
+.lvlbtn .pips i.on{{background:linear-gradient(180deg,#3a66e0,#173489)}}
+[data-theme="dark"] .lvlbtn{{background-color:#132d79;background-image:{kc_d[0]},{kc_d[1]},{kc_d[2]},{kc_d[3]},var(--glaze);box-shadow:0 0 0 1px #050e2a,0 3px 0 #050e2a,0 12px 22px -14px rgba(0,0,0,.9)}}
+[data-theme="dark"] .lvlbtn .pips i.on{{background:linear-gradient(180deg,#cfdcff,#8ea8f0)}}
+.week button{{background:var(--surface);background-image:var(--glaze);box-shadow:0 0 0 1px var(--tile-edge),0 2px 0 var(--tile-edge)}}
+[data-theme="dark"] .week button{{background-color:#132d79;box-shadow:0 0 0 1px #050e2a,0 2px 0 #050e2a}}
+.week button.today{{box-shadow:0 0 0 1.5px var(--accent),0 2px 0 var(--tile-edge)}}
+.board-overlay{{background-color:var(--surface);background-image:var(--glaze),var(--wall);background-size:auto,200px 200px}}
 .buildstamp{{margin:18px 0 2px;text-align:center;font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--ink3);font-variant-numeric:tabular-nums}}
 """
 open('/home/claude/sudoku/art/skin2.css', 'w').write(css)
