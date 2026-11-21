@@ -1,1 +1,49 @@
-{"name":"Negen · Sudoku","short_name":"Negen","start_url":"./","scope":"./","display":"fullscreen","display_override":["fullscreen","standalone"],"orientation":"portrait","background_color":"#e8ecf3","theme_color":"#1d3c9e","icons":[{"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"},{"src":"icon-192.png","sizes":"192x192","type":"image/png"}]}
+{
+  "id": "./",
+  "name": "Negen · Sudoku",
+  "short_name": "Negen",
+  "description": "Sudoku zoals het hoort: rustig, eerlijk en altijd op te lossen met logica. Vijf niveaus van makkelijk tot meester, elke dag een puzzel van de dag, hints die uitleggen waarom. Werkt ook offline.",
+  "lang": "nl",
+  "dir": "ltr",
+  "categories": ["games", "puzzle"],
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "portrait",
+  "background_color": "#e8ecf3",
+  "theme_color": "#f4f6f9",
+  "launch_handler": { "client_mode": ["focus-existing", "navigate-existing", "auto"] },
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Puzzel van de dag",
+      "short_name": "Dagpuzzel",
+      "description": "Speel de puzzel van vandaag",
+      "url": "./#daily",
+      "icons": [
+        { "src": "shortcut-daily-96.png", "sizes": "96x96", "type": "image/png", "purpose": "any" },
+        { "src": "shortcut-daily-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+        { "src": "shortcut-daily-maskable-96.png", "sizes": "96x96", "type": "image/png", "purpose": "maskable" },
+        { "src": "shortcut-daily-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" }
+      ]
+    },
+    {
+      "name": "Nieuw spel",
+      "short_name": "Nieuw",
+      "description": "Kies een niveau en begin een nieuwe puzzel",
+      "url": "./#new",
+      "icons": [
+        { "src": "shortcut-new-96.png", "sizes": "96x96", "type": "image/png", "purpose": "any" },
+        { "src": "shortcut-new-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+        { "src": "shortcut-new-maskable-96.png", "sizes": "96x96", "type": "image/png", "purpose": "maskable" },
+        { "src": "shortcut-new-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" }
+      ]
+    }
+  ]
+}
