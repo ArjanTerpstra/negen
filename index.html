@@ -570,6 +570,16 @@ body{position:relative}
 @keyframes tilein{from{transform:scale(.6);opacity:0}}
 @media (prefers-reduced-motion:reduce){.cell.pop::before{display:none}}
 
+/* @@F1 css (home) */
+/* -- */
+/* @@F2 css (techniques) */
+/* -- */
+/* @@F3 css (pwa) */
+/* -- */
+/* @@F4 css (feel) */
+/* -- */
+/* @@F5 css (sound) */
+/* -- */
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -618,6 +628,16 @@ body{position:relative}
   </main>
 </div>
 
+<!-- @@F1 html (home) -->
+<!-- -- -->
+<!-- @@F2 html (techniques) -->
+<!-- -- -->
+<!-- @@F3 html (pwa) -->
+<!-- -- -->
+<!-- @@F4 html (feel) -->
+<!-- -- -->
+<!-- @@F5 html (sound) -->
+<!-- -- -->
 <!-- New game -->
 <div class="scrim" id="newSheet"><div class="sheet" role="dialog" aria-modal="true">
   <button class="iconbtn x" data-close aria-label="Sluiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
@@ -1235,7 +1255,7 @@ const T = {
     s_peers: 'Rij, kolom en blok markeren', s_peersSub: 'Rond de geselecteerde cel',
     s_timer: 'Timer tonen', s_timerSub: 'De tijd loopt altijd mee voor je statistieken',
     s_sound: 'Geluid', s_soundSub: 'Zachte klikjes en een melodie bij voltooien',
-    s_haptics: 'Trillen', s_hapticsSub: 'Bij fouten, op telefoons',
+    s_haptics: 'Trillen', s_hapticsSub: 'Tikjes bij plaatsen, voltooien en fouten',
     fullscreen: 'Volledig scherm', noFull: 'Volledig scherm kan hier niet. Zet Negen op je beginscherm.', toastCopied: 'Code gekopieerd. Stuur hem naar een vriend!', toastSelect: 'Code geselecteerd, kopieer hem zelf', toastBadCode: 'Deze code is geen geldige puzzel', shareSub: 'Stuur deze code naar een vriend. Die plakt hem onder Nieuw spel en speelt precies dezelfde puzzel.', copy: 'Kopieer code', codePh: 'Puzzelcode plakken', load: 'Laden', toastAutoNotes: 'Alle kandidaten ingevuld', toastNoUndo: 'Niets om terug te zetten',
     toastLocked: '{d} vastgezet · tik op cellen', toastGiven: 'Dit cijfer hoort bij de puzzel',
     toastRestart: 'Puzzel opnieuw gestart', confirmRestart: 'Weet je het zeker? Druk nog een keer om opnieuw te beginnen.',
@@ -1286,6 +1306,16 @@ const T = {
       reveal: 'Voor deze stap is een geavanceerde ketentechniek nodig. Ik vul {cell} voor je in: het is een <b>{d}</b>.',
       elimTail: ' Wegstrepen: {list}.',
     },
+    /* @@F1 nl (home) */
+    /* -- */
+    /* @@F2 nl (techniques) */
+    /* -- */
+    /* @@F3 nl (pwa) */
+    /* -- */
+    /* @@F4 nl (feel) */
+    /* -- */
+    /* @@F5 nl (sound) */
+    /* -- */
   },
   en: {
     tagline: 'sudoku', newGame: 'New game', stats: 'Statistics', settings: 'Settings',
@@ -1310,7 +1340,7 @@ const T = {
     s_peers: 'Highlight row, column and box', s_peersSub: 'Around the selected cell',
     s_timer: 'Show timer', s_timerSub: 'Time is always tracked for your stats',
     s_sound: 'Sound', s_soundSub: 'Soft clicks and a melody on completion',
-    s_haptics: 'Haptics', s_hapticsSub: 'On mistakes, on phones',
+    s_haptics: 'Haptics', s_hapticsSub: 'Taps when placing, completing and on mistakes',
     fullscreen: 'Full screen', noFull: 'Full screen is not allowed here. Add Negen to your home screen.', toastCopied: 'Code copied. Send it to a friend!', toastSelect: 'Code selected, copy it yourself', toastBadCode: 'That code is not a valid puzzle', shareSub: 'Send this code to a friend. They paste it under New game and play the exact same puzzle.', copy: 'Copy code', codePh: 'Paste a puzzle code', load: 'Load', toastAutoNotes: 'All candidates filled in', toastNoUndo: 'Nothing to undo',
     toastLocked: '{d} locked · tap cells', toastGiven: 'This digit is part of the puzzle',
     toastRestart: 'Puzzle restarted', confirmRestart: 'Are you sure? Tap again to restart.',
@@ -1360,6 +1390,16 @@ const T = {
       reveal: 'This step needs an advanced chain technique. I will fill {cell} for you: it is a <b>{d}</b>.',
       elimTail: ' Remove: {list}.',
     },
+    /* @@F1 en (home) */
+    /* -- */
+    /* @@F2 en (techniques) */
+    /* -- */
+    /* @@F3 en (pwa) */
+    /* -- */
+    /* @@F4 en (feel) */
+    /* -- */
+    /* @@F5 en (sound) */
+    /* -- */
   },
 };
 let L = T.nl;
@@ -1478,9 +1518,9 @@ function placeDigit(i, d, { fromHint = false } = {}) {
   if (wrong) {
     G.mistakes++;
     if (S().mistakes) { cells[i].el.classList.remove('shake'); void cells[i].el.offsetWidth; cells[i].el.classList.add('shake'); }
-    if (S().haptics && navigator.vibrate) navigator.vibrate(30);
+    haptic(S().mistakes ? [24, 70, 24] : 6);
     sfx(S().mistakes ? 'wrong' : 'place');
-  } else { sfx('place'); if (S().haptics && navigator.vibrate) navigator.vibrate(6); }
+  } else { sfx('place'); haptic(6); }
   cells[i].el.classList.remove('pop'); void cells[i].el.offsetWidth; cells[i].el.classList.add('pop');
   afterChange([i], d);
 }
@@ -1534,7 +1574,7 @@ function afterChange(changed, d) {
     if (G.values[i] === G.solution[i]) {
       const units = E.CELL_UNITS[i].filter((u) => E.UNITS[u].every((j) => G.values[j] === G.solution[j]));
       if (units.length && !isSolved()) {
-        units.forEach((u) => waveUnit(u, i)); sfx('unit');
+        units.forEach((u) => waveUnit(u, i)); sfx('unit'); haptic([10, 60, 10]);
         if (!store.coach && !locked) setTimeout(showCoach, 900);
       }
       if (G.values.filter((v, j) => v === d && G.solution[j] === d).length === 9 && !isSolved()) {
@@ -1818,7 +1858,7 @@ function toggleLock(d) {
   if (!G || G.done) return;
   locked = locked === d ? 0 : d;
   hideToast();
-  if (S().haptics && navigator.vibrate) navigator.vibrate(12);
+  haptic(12);
   renderAll();
 }
 function cycleNotes() {
@@ -1829,7 +1869,7 @@ function cycleNotes() {
   renderAll();
 }
 { let nDown = 0, nTemp = false, nTimer = null; const tn = $('#tNotes');
-  tn.addEventListener('pointerdown', () => { nDown = performance.now(); nTemp = false; clearTimeout(nTimer); nTimer = setTimeout(() => { if (!notesMode && !colorMode) { notesMode = true; centerMode = false; nTemp = true; if (S().haptics && navigator.vibrate) navigator.vibrate(8); renderAll(); } }, 300); });
+  tn.addEventListener('pointerdown', () => { nDown = performance.now(); nTemp = false; clearTimeout(nTimer); nTimer = setTimeout(() => { if (!notesMode && !colorMode) { notesMode = true; centerMode = false; nTemp = true; haptic(8); renderAll(); } }, 300); });
   const up = () => { clearTimeout(nTimer); if (nTemp) { notesMode = false; nTemp = false; renderAll(); nDown = -1; } };
   tn.addEventListener('pointerup', up); tn.addEventListener('pointercancel', up);
   tn.addEventListener('click', () => { if (nDown === -1) { nDown = 0; return; } cycleNotes(); }); }
@@ -2062,7 +2102,7 @@ function win() {
   store.game = null; save();
   celebrating = true; sel = -1; renderAll();
   winWave(G.values.length ? 40 : 40);
-  sfx('win');
+  sfx('win'); haptic([16, 90, 16, 90, 40]);
   setTimeout(() => {
     $('#winTitle').textContent = G.daily ? L.dailyWin : G.hints ? L.withHelp : L.winTitles[LEVELS.indexOf(G.level)];
     const wd = $('#winDaily'), ws = $('#winShare'); wd.hidden = ws.hidden = !G.daily; ws.classList.remove('primary'); $('#winNew').classList.add('primary'); $('#winNew').textContent = L.nextPuzzle; clearInterval(dailyTick);
@@ -2260,6 +2300,18 @@ let toastT;
 function hideToast() { $('#toast').classList.remove('show'); }
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2200); }
 
+/* ===================== Haptics ===================== */
+// Vibration API where it exists (Android). iOS Safari has none, but since iOS 18 toggling a native
+// <input type=checkbox switch> plays the system haptic, so a hidden switch gives iPhones a real tap.
+const IOS_HAP = !navigator.vibrate && (/iP(hone|ad|od)/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1));
+function hapTap() { try { const l = document.createElement('label'); l.ariaHidden = 'true'; l.style.display = 'none'; const i = document.createElement('input'); i.type = 'checkbox'; i.setAttribute('switch', ''); l.appendChild(i); document.head.appendChild(l); l.click(); l.remove(); } catch {} }
+function haptic(ms) {
+  if (!S().haptics) return;
+  if (navigator.vibrate) { try { navigator.vibrate(ms); } catch {} return; }
+  if (!IOS_HAP) return;
+  if (Array.isArray(ms)) { let t = 0; ms.forEach((d, k) => { if (k % 2 === 0) setTimeout(hapTap, t); t += d; }); } else hapTap();
+}
+
 /* ===================== Sound ===================== */
 let AC = null;
 function ensureAudio() { if (!AC && S().sound) { try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch {} } if (AC && AC.state === 'suspended') AC.resume(); }
@@ -2307,6 +2359,17 @@ function confetti() {
     if (++f < 300) requestAnimationFrame(step); else ctx.clearRect(0, 0, innerWidth, innerHeight);
   })();
 }
+
+/* @@F1 js (home) */
+/* -- */
+/* @@F2 js (techniques) */
+/* -- */
+/* @@F3 js (pwa) */
+/* -- */
+/* @@F4 js (feel) */
+/* -- */
+/* @@F5 js (sound) */
+/* -- */
 
 /* ===================== Boot ===================== */
 function boot() {
