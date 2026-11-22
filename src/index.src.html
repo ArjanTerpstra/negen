@@ -386,7 +386,7 @@ canvas.confetti{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:n
   .brand small{display:none}
   .app{padding-left:10px;padding-right:10px}
   :root{--cell:min(calc((100vw - 32px) / 9), calc((100dvh - 404px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) / 9))}
-  .app{padding-top:max(10px,env(safe-area-inset-top));padding-bottom:max(6px,env(safe-area-inset-bottom))}
+  .app{padding-top:max(10px,env(safe-area-inset-top));padding-bottom:max(4px,env(safe-area-inset-bottom))}
   .board-wrap{padding:6px}
   .board-overlay{inset:3px}
   .status,.right{width:calc(var(--cell)*9 + 12px)}
@@ -592,7 +592,7 @@ body{position:relative}
   --ink:#0f2160; --ink2:#43507a; --ink3:#7d86a3;
   --line:#d3daeb; --line-strong:#173489;
   --accent:#2148bd; --accent-ink:#2550cc; --accent-soft:#dce4fa; --accent-softer:#eef2fc;
-  --peer:#eef1f9; --same:#d7e1fa; --sel:#c5d4fb;
+  --peer:#e7ecf8; --same:#d7e1fa; --sel:#c5d4fb;
   --given:#0e2470;
   --wall:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cstyle%3Epath,circle%7Bfill:none;stroke:%231a3a9c;stroke-width:1.35;stroke-linecap:round;stroke-linejoin:round%7D.w%7Bfill:%231a3a9c;fill-opacity:0.2%7D.w2%7Bfill:%231a3a9c;fill-opacity:0.32%7D.f%7Bfill:%231a3a9c;stroke:none%7D%3C/style%3E%3Cdefs%3E%3Cfilter id='p' x='-2%25' y='-2%25' width='104%25' height='104%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.045' numOctaves='2' seed='11'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='2.4' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23p)' opacity='0.17'%3E%3Cpath d='M0 0H240M0 120H240M0 240H240M0 0V240M120 0V240M240 0V240' stroke-width='1.4' opacity='.55'/%3E%3Cpath d='M2.3 2.3Q4.0 8.8 10.6 10.6Q8.8 4.0 2.3 2.3ZM-2.3 2.3Q-8.8 4.0 -10.6 10.6Q-4.0 8.8 -2.3 2.3ZM-2.3 -2.3Q-4.0 -8.8 -10.6 -10.6Q-8.8 -4.0 -2.3 -2.3ZM2.3 -2.3Q8.8 -4.0 10.6 -10.6Q4.0 -8.8 2.3 -2.3ZM3.0 0.0Q5.8 1.6 8.5 0.0Q5.8 -1.6 3.0 0.0ZM0.0 3.0Q-1.6 5.8 0.0 8.5Q1.6 5.8 0.0 3.0ZM-3.0 0.0Q-5.8 -1.6 -8.5 0.0Q-5.8 1.6 -3.0 0.0ZM-0.0 -3.0Q1.6 -5.8 -0.0 -8.5Q-1.6 -5.8 -0.0 -3.0Z'/%3E%3Ccircle cx='0' cy='0' r='2.1'/%3E%3Cpath d='M2.3 122.3Q4.0 128.8 10.6 130.6Q8.8 124.0 2.3 122.3ZM-2.3 122.3Q-8.8 124.0 -10.6 130.6Q-4.0 128.8 -2.3 122.3ZM-2.3 117.7Q-4.0 111.2 -10.6 109.4Q-8.8 116.0 -2.3 117.7ZM2.3 117.7Q8.8 116.0 10.6 109.4Q4.0 111.2 2.3 117.7ZM3.0 120.0Q5.8 121.6 8.5 120.0Q5.8 118.4 3.0 120.0ZM0.0 123.0Q-1.6 125.8 0.0 128.5Q1.6 125.8 0.0 123.0ZM-3.0 120.0Q-5.8 118.4 -8.5 120.0Q-5.8 121.6 -3.0 120.0ZM-0.0 117.0Q1.6 114.2 -0.0 111.5Q-1.6 114.2 -0.0 117.0Z'/%3E%3Ccircle cx='0' cy='120' r='2.1'/%3E%3Cpath d='M2.3 242.3Q4.0 248.8 10.6 250.6Q8.8 244.0 2.3 242.3ZM-2.3 242.3Q-8.8 244.0 -10.6 250.6Q-4.0 248.8 -2.3 242.3ZM-2.3 237.7Q-4.0 231.2 -10.6 229.4Q-8.8 236.0 -2.3 237.7ZM2.3 237.7Q8.8 236.0 10.6 229.4Q4.0 231.2 2.3 237.7ZM3.0 240.0Q5.8 241.6 8.5 240.0Q5.8 238.4 3.0 240.0ZM0.0 243.0Q-1.6 245.8 0.0 248.5Q1.6 245.8 0.0 243.0ZM-3.0 240.0Q-5.8 238.4 -8.5 240.0Q-5.8 241.6 -3.0 240.0ZM-0.0 237.0Q1.6 234.2 -0.0 231.5Q-1.6 234.2 -0.0 237.0Z'/%3E%3Ccircle cx='0' cy='240' r='2.1'/%3E%3Cpath d='M122.3 2.3Q124.0 8.8 130.6 10.6Q128.8 4.0 122.3 2.3ZM117.7 2.3Q111.2 4.0 109.4 10.6Q116.0 8.8 117.7 2.3ZM117.7 -2.3Q116.0 -8.8 109.4 -10.6Q111.2 -4.0 117.7 -2.3ZM122.3 -2.3Q128.8 -4.0 130.6 -10.6Q124.0 -8.8 122.3 -2.3ZM123.0 0.0Q125.8 1.6 128.5 0.0Q125.8 -1.6 123.0 0.0ZM120.0 3.0Q118.4 5.8 120.0 8.5Q121.6 5.8 120.0 3.0ZM117.0 0.0Q114.2 -1.6 111.5 0.0Q114.2 1.6 117.0 0.0ZM120.0 -3.0Q121.6 -5.8 120.0 -8.5Q118.4 -5.8 120.0 -3.0Z'/%3E%3Ccircle cx='120' cy='0' r='2.1'/%3E%3Cpath d='M122.3 122.3Q124.0 128.8 130.6 130.6Q128.8 124.0 122.3 122.3ZM117.7 122.3Q111.2 124.0 109.4 130.6Q116.0 128.8 117.7 122.3ZM117.7 117.7Q116.0 111.2 109.4 109.4Q111.2 116.0 117.7 117.7ZM122.3 117.7Q128.8 116.0 130.6 109.4Q124.0 111.2 122.3 117.7ZM123.0 120.0Q125.8 121.6 128.5 120.0Q125.8 118.4 123.0 120.0ZM120.0 123.0Q118.4 125.8 120.0 128.5Q121.6 125.8 120.0 123.0ZM117.0 120.0Q114.2 118.4 111.5 120.0Q114.2 121.6 117.0 120.0ZM120.0 117.0Q121.6 114.2 120.0 111.5Q118.4 114.2 120.0 117.0Z'/%3E%3Ccircle cx='120' cy='120' r='2.1'/%3E%3Cpath d='M122.3 242.3Q124.0 248.8 130.6 250.6Q128.8 244.0 122.3 242.3ZM117.7 242.3Q111.2 244.0 109.4 250.6Q116.0 248.8 117.7 242.3ZM117.7 237.7Q116.0 231.2 109.4 229.4Q111.2 236.0 117.7 237.7ZM122.3 237.7Q128.8 236.0 130.6 229.4Q124.0 231.2 122.3 237.7ZM123.0 240.0Q125.8 241.6 128.5 240.0Q125.8 238.4 123.0 240.0ZM120.0 243.0Q118.4 245.8 120.0 248.5Q121.6 245.8 120.0 243.0ZM117.0 240.0Q114.2 238.4 111.5 240.0Q114.2 241.6 117.0 240.0ZM120.0 237.0Q121.6 234.2 120.0 231.5Q118.4 234.2 120.0 237.0Z'/%3E%3Ccircle cx='120' cy='240' r='2.1'/%3E%3Cpath d='M242.3 2.3Q244.0 8.8 250.6 10.6Q248.8 4.0 242.3 2.3ZM237.7 2.3Q231.2 4.0 229.4 10.6Q236.0 8.8 237.7 2.3ZM237.7 -2.3Q236.0 -8.8 229.4 -10.6Q231.2 -4.0 237.7 -2.3ZM242.3 -2.3Q248.8 -4.0 250.6 -10.6Q244.0 -8.8 242.3 -2.3ZM243.0 0.0Q245.8 1.6 248.5 0.0Q245.8 -1.6 243.0 0.0ZM240.0 3.0Q238.4 5.8 240.0 8.5Q241.6 5.8 240.0 3.0ZM237.0 0.0Q234.2 -1.6 231.5 0.0Q234.2 1.6 237.0 0.0ZM240.0 -3.0Q241.6 -5.8 240.0 -8.5Q238.4 -5.8 240.0 -3.0Z'/%3E%3Ccircle cx='240' cy='0' r='2.1'/%3E%3Cpath d='M242.3 122.3Q244.0 128.8 250.6 130.6Q248.8 124.0 242.3 122.3ZM237.7 122.3Q231.2 124.0 229.4 130.6Q236.0 128.8 237.7 122.3ZM237.7 117.7Q236.0 111.2 229.4 109.4Q231.2 116.0 237.7 117.7ZM242.3 117.7Q248.8 116.0 250.6 109.4Q244.0 111.2 242.3 117.7ZM243.0 120.0Q245.8 121.6 248.5 120.0Q245.8 118.4 243.0 120.0ZM240.0 123.0Q238.4 125.8 240.0 128.5Q241.6 125.8 240.0 123.0ZM237.0 120.0Q234.2 118.4 231.5 120.0Q234.2 121.6 237.0 120.0ZM240.0 117.0Q241.6 114.2 240.0 111.5Q238.4 114.2 240.0 117.0Z'/%3E%3Ccircle cx='240' cy='120' r='2.1'/%3E%3Cpath d='M242.3 242.3Q244.0 248.8 250.6 250.6Q248.8 244.0 242.3 242.3ZM237.7 242.3Q231.2 244.0 229.4 250.6Q236.0 248.8 237.7 242.3ZM237.7 237.7Q236.0 231.2 229.4 229.4Q231.2 236.0 237.7 237.7ZM242.3 237.7Q248.8 236.0 250.6 229.4Q244.0 231.2 242.3 237.7ZM243.0 240.0Q245.8 241.6 248.5 240.0Q245.8 238.4 243.0 240.0ZM240.0 243.0Q238.4 245.8 240.0 248.5Q241.6 245.8 240.0 243.0ZM237.0 240.0Q234.2 238.4 231.5 240.0Q234.2 241.6 237.0 240.0ZM240.0 237.0Q241.6 234.2 240.0 231.5Q238.4 234.2 240.0 237.0Z'/%3E%3Ccircle cx='240' cy='240' r='2.1'/%3E%3Cg transform='translate(0 0)'%3E%3Ccircle cx='60' cy='60' r='34'/%3E%3Ccircle cx='60' cy='60' r='31' stroke-width='.7'/%3E%3Cg transform='translate(60 60) scale(.8) translate(-60 -61)'%3E%3Cpath d='M30 83Q60 77 90 83'/%3E%3Cpath d='M38 86l2-3M45 85l1.5-3M76 85l1.5-3M83 86l2-3' stroke-width='1'/%3E%3Cpath class='w' d='M53 81L56.5 55L63.5 55L67 81Z'/%3E%3Cpath d='M58.4 81v-5a1.6 1.6 0 0 1 3.2 0v5'/%3E%3Cpath class='w2' d='M55 55Q60 47.5 65 55Z'/%3E%3Cpath d='M60.0 51.5L78.0 38.9' stroke-width='1.6'/%3E%3Cpath class='w' d='M64.1 48.6L78.0 38.9L81.0 43.1L67.9 52.3Z'/%3E%3Cpath d='M69.0 45.2L72.0 49.5' stroke-width='.8'/%3E%3Cpath d='M73.5 42.0L76.5 46.3' stroke-width='.8'/%3E%3Cpath d='M60.0 51.5L47.4 33.5' stroke-width='1.6'/%3E%3Cpath class='w' d='M57.1 47.4L47.4 33.5L51.6 30.5L60.8 43.6Z'/%3E%3Cpath d='M53.7 42.5L58.0 39.5' stroke-width='.8'/%3E%3Cpath d='M50.5 38.0L54.8 35.0' stroke-width='.8'/%3E%3Cpath d='M60.0 51.5L42.0 64.1' stroke-width='1.6'/%3E%3Cpath class='w' d='M55.9 54.4L42.0 64.1L39.0 59.9L52.1 50.7Z'/%3E%3Cpath d='M51.0 57.8L48.0 53.5' stroke-width='.8'/%3E%3Cpath d='M46.5 61.0L43.5 56.7' stroke-width='.8'/%3E%3Cpath d='M60.0 51.5L72.6 69.5' stroke-width='1.6'/%3E%3Cpath class='w' d='M62.9 55.6L72.6 69.5L68.4 72.5L59.2 59.4Z'/%3E%3Cpath d='M66.3 60.5L62.0 63.5' stroke-width='.8'/%3E%3Cpath d='M69.5 65.0L65.2 68.0' stroke-width='.8'/%3E%3Ccircle cx='60' cy='51.5' r='1.6' class='f'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(120 0)'%3E%3Ccircle cx='60' cy='60' r='34'/%3E%3Ccircle cx='60' cy='60' r='31' stroke-width='.7'/%3E%3Cg transform='translate(60 60) scale(.8) translate(-60 -61)'%3E%3Cpath class='w' d='M35 69Q60 81 85 69L80.5 63.5L39.5 63.5Z'/%3E%3Cpath d='M60 63.5V29M46 63.5V40M74 63.5V44'/%3E%3Cpath class='w2' d='M61 31Q74 38 61 46Z'/%3E%3Cpath class='w2' d='M61 47Q76 55 61 62Z'/%3E%3Cpath class='w2' d='M47 42Q57 48 47 55Z'/%3E%3Cpath class='w2' d='M75 46Q83 51 75 57Z'/%3E%3Cpath d='M60 29l7 2.2l-7 2.2' class='f'/%3E%3Cpath d='M29 79q5-3.5 10 0t10 0t10 0t10 0t10 0t10 0M35 85q5-3 10 0t10 0t10 0t10 0' stroke-width='1.1'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(0 120)'%3E%3Ccircle cx='60' cy='60' r='34'/%3E%3Ccircle cx='60' cy='60' r='31' stroke-width='.7'/%3E%3Cg transform='translate(60 60) scale(.8) translate(-60 -61)'%3E%3Cpath d='M60 87C60 77 59 66 60 55'/%3E%3Cpath class='w' d='M60 81C50 77 44 69 45 61C53 65 58 71 60 78Z'/%3E%3Cpath class='w' d='M60 75C69 72 75 65 75 58C67 61 62 66 60 72Z'/%3E%3Cpath class='w2' d='M51 39C50 50 54 56 60 56C66 56 70 50 69 39L64.5 44.5L60 36L55.5 44.5Z'/%3E%3Cpath d='M60 36V50' stroke-width='.9'/%3E%3Cpath d='M44 87q16-4 32 0' stroke-width='1.1'/%3E%3C/g%3E%3C/g%3E%3Cg transform='translate(120 120)'%3E%3Ccircle cx='60' cy='60' r='34'/%3E%3Ccircle cx='60' cy='60' r='31' stroke-width='.7'/%3E%3Cg transform='translate(60 60) scale(.8) translate(-60 -61)'%3E%3Cpath class='w' d='M46 84V58H49V54H52V50H55V46H65V50H68V54H71V58H74V84Z'/%3E%3Cpath class='f' d='M51 63h6v6.5h-6zM63 63h6v6.5h-6zM57 51h6v5.5h-6z' fill-opacity='.55'/%3E%3Cpath d='M57 84V77a3 3 0 0 1 6 0V84'/%3E%3Cpath d='M33 84Q60 80.5 87 84'/%3E%3Cpath d='M82 84V73M82 73c-4-1-5-6-1-8c1-4 6-3 6 1c3 2 1 7-3 7' stroke-width='1.1'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   --glaze:radial-gradient(140% 100% at 18% 8%,rgba(255,255,255,1),rgba(255,255,255,0) 55%),linear-gradient(180deg,rgba(255,255,255,0) 60%,rgba(23,52,137,.035));
@@ -1286,7 +1286,7 @@ html.f3-flying .brand{opacity:0}
   --f4-tap:linear(0,.09,.295,.535,.756,.929,1.045,1.107,1.126,1.117,1.092,1.062,1.033,1.011,.996,.987,.984,.985,.988,.992,.995,.998,1,1.002,1.002,1.002,1.002,1.001,1);
   --f4-settle:linear(0,.073,.235,.424,.603,.753,.867,.946,.997,1.025,1.036,1.038,1.034,1.027,1.02,1.013,1.008,1.004,1.001,1,.999,.999,.999,.999,.999,.999,1)}}
 /* dark: the row/column/box tint was 1.03:1 against the glaze (invisible); now ~1.2:1. Cobalt tile + calm multi-select */
-[data-theme="dark"]{--peer:#1f2b50;--f4-tile:color-mix(in srgb,#6f93ff 33%,#131c33);--f4-ring:rgba(156,186,255,.95);--f4-msel:color-mix(in srgb,#6f93ff 17%,#131c33)}
+[data-theme="dark"]{--peer:#1b3076;--f4-tile:color-mix(in srgb,#6f93ff 33%,#131c33);--f4-ring:rgba(156,186,255,.95);--f4-msel:color-mix(in srgb,#6f93ff 17%,#131c33)}
 /* colour mode at night: the same nine hue families as the day swatches, lifted out of the mud (L* 35-38, OKLCH chroma
    .075-.10, min pairwise OKLab distance .058 vs .030); givens keep >= 6.2:1, user digits >= 3.3:1 (large text) */
 [data-theme="dark"]{--c1:#853d3d;--c2:#7d4717;--c3:#635713;--c4:#376333;--c5:#14645a;--c6:#145e7e;--c7:#455389;--c8:#704277;--c9:#525761}
@@ -2809,7 +2809,7 @@ body.g4-up:not(.hm-on) .app,body.g4-up .hm-in{transform:scale(.955);will-change:
 .jr-rt.locked .jr-md{color:var(--ink3);background:color-mix(in srgb,var(--surface) 70%,var(--bg))}
 .jr-rx{flex:1;min-width:0}
 .jr-rx b{display:block;font-family:var(--display);font-weight:650;font-size:17px;line-height:1.2}
-.jr-rx small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:1px;font-size:12.5px;line-height:1.35;color:var(--ink2)}
+.jr-rx small{display:block;margin-top:1px;font-size:12.5px;line-height:1.35;color:var(--ink2)}
 .jr-rt.locked .jr-rx b{color:var(--ink2)}
 .jr-rp{flex:none;min-width:34px;text-align:right;font-weight:800;font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums}
 .jr-rp svg{width:15px;height:15px;vertical-align:-2px;color:var(--ink3)}
@@ -3037,23 +3037,16 @@ body:not(.done) .h3-dshare{display:none}
 .vx-over{z-index:1}
 .vx-board.vx-diagonal .vx-under,.vx-board.vx-killer .vx-over{display:block}
 
-/* diagonal: a wash ("dieven") between two fine trek lines, a little uneven like a brush */
+/* diagonal: one fine painted line through the middle of the tiles; it darkens when the chosen cell lies on it */
 .vx-band{--vx-c:var(--accent)}
 .vx-band.hint{--vx-c:var(--hint)}
 .vx-band>g{transition:opacity .32s cubic-bezier(.2,.8,.2,1)}
 .vx-band>.vx-b1{opacity:0}
 .vx-band:is(.on,.hint)>.vx-b1{opacity:1}
-.vx-wash{fill:var(--vx-c);fill-opacity:.06}
-.vx-pool{fill:none;stroke:var(--vx-c);stroke-opacity:.055;stroke-linecap:round;stroke-linejoin:round}
-.vx-trek{fill:var(--vx-c);fill-opacity:.42;stroke:none}
-.vx-b1 .vx-wash{fill-opacity:.075}
-.vx-b1 .vx-pool{stroke-opacity:.05}
-.vx-b1 .vx-trek{fill-opacity:.3}
-[data-theme=dark] .vx-wash{fill-opacity:.085}
-[data-theme=dark] .vx-pool{stroke-opacity:.07}
-[data-theme=dark] .vx-trek{fill-opacity:.5}
-.vx-band.hint>.vx-b1 .vx-wash{fill-opacity:.15}
-.vx-band.hint>.vx-b1 .vx-trek{fill-opacity:.55}
+.vx-trek{fill:var(--vx-c);fill-opacity:.5;stroke:none}
+.vx-b1 .vx-trek{fill-opacity:.5}
+[data-theme=dark] .vx-trek{fill-opacity:.62}
+.vx-band.hint>.vx-b1 .vx-trek{fill-opacity:.7}
 
 /* killer: dashed cage lines, the sum chip, and the states of a cage */
 .vx-over line{fill:none;stroke:color-mix(in srgb,var(--ink) 62%,transparent);stroke-width:1.2;stroke-linecap:butt}
@@ -3101,8 +3094,8 @@ body:not(.done) .h3-dshare{display:none}
 .vx-ic svg{display:block;width:100%;height:100%}
 .vi-t{fill:var(--surface);stroke:var(--tile-edge);stroke-width:1}
 .vi-g{fill:none;stroke:color-mix(in srgb,var(--line) 85%,transparent);stroke-width:.8}
-.vi-w{fill:var(--accent);fill-opacity:.16}
-.vi-l{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linecap:round}
+.vi-w{fill:var(--accent);fill-opacity:.2}
+.vi-l{fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round}
 .vi-d{fill:none;stroke:var(--ink2);stroke-width:1.35;stroke-dasharray:2.6 2;stroke-linejoin:round}
 .vi-c{fill:var(--accent)}
 .vi-n{fill:white;font:800 7.4px/1 var(--font);text-anchor:middle;letter-spacing:-.02em}
@@ -3198,6 +3191,14 @@ body:not(.done) .h3-dshare{display:none}
 .sheet>h2+.sub{padding-right:34px}
 #variantSheet .vx-sect{margin-top:4px}
 #variantSheet .vx-sect>.sect:first-child{display:none}
+/* J1 (2026-11-22): legibility after the blind review. The remaining-count numerals on the keys were too faint
+   (about 3.5:1); the peer tint of the night board was a grey slate on the cobalt cells, so the row, column and box
+   of the chosen cell nearly vanished. */
+.key small{color:var(--ink2)}
+[data-theme=dark] .key small{color:color-mix(in srgb,var(--ink) 72%,var(--accent))}
+@media (hover:none) and (pointer:coarse){.kbd-only{display:none}}
+.j1-bn{display:block;margin-top:3px;font-size:11px;font-weight:600;line-height:1.2;color:var(--ink3)}
+.jr-mu.locked.jr-ready .sp>.jr-s,.jr-big.jr-ready .jr-bt.locked.sp>.jr-s{opacity:.3}
 /* -- */
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
@@ -3685,7 +3686,7 @@ body:not(.done) .h3-dshare{display:none}
     <button id="mShare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7M16 6l-4-4-4 4M12 2v13"/></svg><span data-i18n="tShare"></span></button>
     <button id="mHelp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg><span data-i18n="tHelp"></span></button>
   </div>
-  <div class="sect" style="margin-top:16px" data-i18n="settings"></div>
+  <div class="sect" style="margin-top:16px" data-i18n="prefs"></div>
   <div id="settingsList"></div>
   <p class="buildstamp">Negen · v__BUILD__</p>
 </div></div>
@@ -3760,7 +3761,7 @@ const T = {
     undo: 'Terug', redo: 'Opnieuw', erase: 'Wissen', notes: 'Notities', hint: 'Hint', on: 'AAN', off: 'UIT',
     newGameSub: 'Elke puzzel heeft precies één oplossing en is op te lossen met logica, zonder gokken.',
     daily: 'Puzzel van de dag', chooseLevel: 'Kies een niveau', continueGame: 'Doorgaan met {lvl} · {time}',
-    settingsSub: 'Speel zoals jij wilt.', thisPuzzle: 'Deze puzzel',
+    settingsSub: 'Speel zoals jij wilt.', thisPuzzle: 'Deze puzzel', prefs: 'Voorkeuren', j1BestNote: 'telt zonder hints',
     autoNotes: 'Alle notities invullen', tAuto: 'Notities', tRestart: 'Herstart', tShare: 'Delen', tHelp: 'Uitleg', newTech: 'Nieuw gezien: {t}', replay: '▶ Terugkijken', nextShort: 'Volgende', restart: 'Opnieuw beginnen', share: 'Deel deze puzzel', howTo: 'Hoe speel je',
     statsSub: 'Je voortgang op dit apparaat.', nextPuzzle: 'Volgende puzzel',
     levels: { easy: 'Makkelijk', medium: 'Gemiddeld', hard: 'Moeilijk', expert: 'Expert', master: 'Meester' },
@@ -3771,7 +3772,7 @@ const T = {
     dayStreak: '🔥 {n} dag', dayStreaks: '🔥 {n} dagen', dailyDone: 'Vandaag opgelost ✓', dailyWin: 'Puzzel van de dag ✓', notPlayed: 'Nog niet gespeeld', dailies: 'Dagpuzzels', lgSolved: 'opgelost', lgStarted: 'begonnen', lgNot: 'nog niet', gotIt: 'Begrepen', coach: 'Tip: houd een cijfer ingedrukt om het vast te zetten. Tik dan alle vakjes waar het moet.', nextDaily: 'Nieuwe puzzel over {t}', shareRes: 'Deel resultaat', toastResCopied: 'Resultaat gekopieerd', mistakesShort: 'fouten',
     s_theme: 'Thema', s_themeSub: 'Licht, donker of automatisch', t_auto: 'Auto', t_light: 'Licht', t_dark: 'Donker',
     s_lang: 'Taal', s_langSub: 'Language',
-    colorsTool: 'Kleur', s_colors: 'Celkleuren', s_colorsSub: 'Voegt een Kleur-knop toe om vakjes te markeren', colorLbl: 'KLEUR', s_center: 'Middennotities', s_centerSub: 'Notitieknop wisselt tussen hoek en midden (Ctrl+cijfer)', centerLbl: 'MIDDEN', cornerLbl: 'HOEK', s_mistakes: 'Fouten direct tonen', s_mistakesSub: 'Een verkeerd cijfer wordt rood',
+    colorsTool: 'Kleur', s_colors: 'Celkleuren', s_colorsSub: 'Voegt een Kleur-knop toe om vakjes te markeren', colorLbl: 'KLEUR', s_center: 'Middennotities', s_centerSub: 'Notitieknop wisselt tussen hoek en midden<span class="kbd-only"> (Ctrl+cijfer)</span>', centerLbl: 'MIDDEN', cornerLbl: 'HOEK', s_mistakes: 'Fouten direct tonen', s_mistakesSub: 'Een verkeerd cijfer wordt rood',
     s_autoclean: 'Notities automatisch opruimen', s_autocleanSub: 'Wist een cijfer uit de notities in rij, kolom en blok',
     s_highlight: 'Gelijke cijfers markeren', s_highlightSub: 'Ook notities met hetzelfde cijfer',
     s_peers: 'Rij, kolom en blok markeren', s_peersSub: 'Rond de geselecteerde cel',
@@ -4383,7 +4384,7 @@ const T = {
     undo: 'Undo', redo: 'Redo', erase: 'Erase', notes: 'Notes', hint: 'Hint', on: 'ON', off: 'OFF',
     newGameSub: 'Every puzzle has exactly one solution and can be solved with logic, no guessing.',
     daily: 'Daily puzzle', chooseLevel: 'Choose a level', continueGame: 'Continue {lvl} · {time}',
-    settingsSub: 'Play your way.', thisPuzzle: 'This puzzle',
+    settingsSub: 'Play your way.', thisPuzzle: 'This puzzle', prefs: 'Preferences', j1BestNote: 'counts without hints',
     autoNotes: 'Fill all notes', tAuto: 'Notes', tRestart: 'Restart', tShare: 'Share', tHelp: 'Guide', newTech: 'First seen: {t}', replay: '▶ Replay', nextShort: 'Next', restart: 'Restart puzzle', share: 'Share this puzzle', howTo: 'How to play',
     statsSub: 'Your progress on this device.', nextPuzzle: 'Next puzzle',
     levels: { easy: 'Easy', medium: 'Medium', hard: 'Hard', expert: 'Expert', master: 'Master' },
@@ -4394,7 +4395,7 @@ const T = {
     dayStreak: '🔥 {n} day', dayStreaks: '🔥 {n} days', dailyDone: 'Solved today ✓', dailyWin: 'Daily puzzle ✓', notPlayed: 'Not played yet', dailies: 'Daily puzzles', lgSolved: 'solved', lgStarted: 'started', lgNot: 'not yet', gotIt: 'Got it', coach: 'Tip: long-press a digit to lock it, then tap every cell where it goes.', nextDaily: 'New puzzle in {t}', shareRes: 'Share result', toastResCopied: 'Result copied', mistakesShort: 'mistakes',
     s_theme: 'Theme', s_themeSub: 'Light, dark or automatic', t_auto: 'Auto', t_light: 'Light', t_dark: 'Dark',
     s_lang: 'Language', s_langSub: 'Taal',
-    colorsTool: 'Colour', s_colors: 'Cell colours', s_colorsSub: 'Adds a Colour button to mark cells', colorLbl: 'COLOUR', s_center: 'Centre marks', s_centerSub: 'Notes button cycles corner and centre (Ctrl+digit)', centerLbl: 'CENTRE', cornerLbl: 'CORNER', s_mistakes: 'Show mistakes instantly', s_mistakesSub: 'A wrong digit turns red',
+    colorsTool: 'Colour', s_colors: 'Cell colours', s_colorsSub: 'Adds a Colour button to mark cells', colorLbl: 'COLOUR', s_center: 'Centre marks', s_centerSub: 'Notes button cycles corner and centre<span class="kbd-only"> (Ctrl+digit)</span>', centerLbl: 'CENTRE', cornerLbl: 'CORNER', s_mistakes: 'Show mistakes instantly', s_mistakesSub: 'A wrong digit turns red',
     s_autoclean: 'Auto-clean notes', s_autocleanSub: 'Removes a placed digit from notes in its row, column and box',
     s_highlight: 'Highlight matching digits', s_highlightSub: 'Including matching notes',
     s_peers: 'Highlight row, column and box', s_peersSub: 'Around the selected cell',
@@ -5290,10 +5291,16 @@ function linkSpec(s) {
   return null;
 }
 function placeOrns() {
-  const wrap = $('#orns'); if (!wrap) return; const wr = wrap.getBoundingClientRect(); const bx = [...document.querySelectorAll('#board .box')];
-  if (bx.length < 9) return; const r0 = bx[0].getBoundingClientRect(), r4 = bx[4].getBoundingClientRect(), r8 = bx[8].getBoundingClientRect();
-  const xs = [(r0.right + r4.left) / 2, (r4.right + r8.left) / 2], ys = [(r0.bottom + r4.top) / 2, (r4.bottom + r8.top) / 2];
-  [...wrap.children].forEach((el, k) => { el.style.left = (xs[k % 2] - wr.left) + 'px'; el.style.top = (ys[k >> 1] - wr.top) + 'px'; });
+  // layout boxes (offsets), not getBoundingClientRect: this runs from render(), often while the board is still
+  // mid-transform (the settle on a new game, the flight from the menu); rects taken then left the ornaments off
+  // the crossing of the box lines for good
+  const wrap = $('#orns'); if (!wrap) return; const bx = [...document.querySelectorAll('#board .box')];
+  const P = wrap.offsetParent; if (bx.length < 9 || !P) return;
+  const pos = (el) => { let x = 0, y = 0, e = el; while (e && e !== P) { x += e.offsetLeft; y += e.offsetTop; const q = e.offsetParent; if (q && q !== P) { x += q.clientLeft; y += q.clientTop; } e = q; } return e === P ? [x, y] : null; };
+  const a = pos(bx[0]), b = pos(bx[4]), c = pos(bx[8]); if (!a || !b || !c) return;
+  const xs = [(a[0] + bx[0].offsetWidth + b[0]) / 2, (b[0] + bx[4].offsetWidth + c[0]) / 2], ys = [(a[1] + bx[0].offsetHeight + b[1]) / 2, (b[1] + bx[4].offsetHeight + c[1]) / 2];
+  const ox = wrap.offsetLeft + wrap.clientLeft, oy = wrap.offsetTop + wrap.clientTop;
+  [...wrap.children].forEach((el, k) => { el.style.left = (xs[k % 2] - ox) + 'px'; el.style.top = (ys[k >> 1] - oy) + 'px'; });
 }
 function drawLinks() {
   placeOrns();
@@ -5807,7 +5814,7 @@ function openStats() {
   const tsOf = (lv) => (store.history || []).filter((x) => x.l === lv && !x.h).slice(-12).map((x) => x.t);
   const showTrend = LEVELS.some((lv) => tsOf(lv).length >= 2);
   const last = (store.history || []).slice(-1)[0];
-  if (last) { const st = store.stats[last.l] || {}; $('#statsHero').innerHTML = `<div><span>${L.levels[last.l]} · ${L.bestTime}</span><b>${st.best ? fmtTime(st.best) : '—'}</b></div><div><span>${L.levels[last.l]} · ${L.avgTime}</span><b>${st.won ? fmtTime(st.total / st.won) : '—'}</b></div>`; } else $('#statsHero').innerHTML = '';
+  if (last) { const st = store.stats[last.l] || {}; $('#statsHero').innerHTML = `<div><span>${L.levels[last.l]} · ${L.bestTime}</span><b>${st.best ? fmtTime(st.best) : '—'}</b>${!st.best && st.won ? `<small class="j1-bn">${L.j1BestNote}</small>` : ''}</div><div><span>${L.levels[last.l]} · ${L.avgTime}</span><b>${st.won ? fmtTime(st.total / st.won) : '—'}</b></div>`; } else $('#statsHero').innerHTML = '';
   let cal = ''; const now = new Date(), loc = S().lang === 'en' ? 'en-GB' : 'nl-NL', mon0 = (now.getDay() + 6) % 7, start = new Date(now.getFullYear(), now.getMonth(), now.getDate() - mon0 - 28);
   for (let k = 0; k < 7; k++) { const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + k); cal += `<em>${d.toLocaleDateString(loc, { weekday: 'short' }).replace('.', '').slice(0, 2)}</em>`; }
   for (let k = 0; k < 35; k++) { const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + k), key = dateKey(d), t = dd.done[key], fut = d > now, cls = [t !== undefined ? 'on' : (dd.started || {})[key] ? 'st' : '', key === today ? 'today' : '', d.getMonth() !== now.getMonth() ? 'prev' : '', fut ? 'fut' : ''].join(' '); cal += `<button class="${cls}" data-key="${key}" ${fut ? 'disabled' : ''} title="${key}${t !== undefined ? ' · ' + fmtTime(t) : ''}">${d.getDate()}</button>`; }
@@ -11915,7 +11922,7 @@ function jrHead(kick, title) {
   const cnt = document.getElementById('jrCount'); cnt.lastChild.textContent = `${info.tiles}/81`; cnt.setAttribute('aria-label', fmt(L.jrTilesAria, { n: info.tiles })); cnt.title = cnt.getAttribute('aria-label');
   document.getElementById('jrBack').setAttribute('aria-label', L.jrBack);
 }
-function jrStateFor(c) { return (k) => (jrHas(c, k) ? 'on' : jrOpen(c) ? 'sp' : 'off'); }
+function jrStateFor(c) { return (k) => (jrHas(c, k) ? 'on' : 'sp'); } // a locked place shows its pounced sketch faintly (J1)
 function jrMapHTML() {
   const info = journeyInfo(), j = jrSt(), cur = info.complete || jrCere >= 0 ? -1 : info.chapter;
   let h = `<div class="jr-wall" role="group" aria-label="${jrEsc(L.jrTitle)}">`;
@@ -12490,7 +12497,7 @@ function h3StatsFix() {
     else {
       const st = store.stats[last.l] || {}, a = h3Avg(st), avg = a === null ? '—' : fmtTime(a);
       if (last === lastAny && hero.children.length === 2) { const b = hero.children[1].querySelector('b'); if (b) b.textContent = avg; }
-      else hero.innerHTML = `<div><span>${L.levels[last.l]} · ${L.bestTime}</span><b>${st.best ? fmtTime(st.best) : '—'}</b></div><div><span>${L.levels[last.l]} · ${L.avgTime}</span><b>${avg}</b></div>`;
+      else hero.innerHTML = `<div><span>${L.levels[last.l]} · ${L.bestTime}</span><b>${st.best ? fmtTime(st.best) : '—'}</b>${!st.best && st.won ? `<small class="j1-bn">${L.j1BestNote}</small>` : ''}</div><div><span>${L.levels[last.l]} · ${L.avgTime}</span><b>${avg}</b></div>`;
     }
   }
   // the table: averages over timed solves, a trend without zen times, and how many solves were in zen
@@ -14186,28 +14193,23 @@ function variantLabel(g) { return vxApi ? vxApi.label(g || G) : ''; }
     const d = Math.max(2.4, q.cw * 0.088), g = Math.max(1.9, q.cw * 0.066);
     return segs.map((s) => dashed(s, d, g)).join('');
   }
-  // a painted ribbon along a diagonal, as a Delft painter would lay it: a wash ("dieven") whose pigment pools a
-  // little along its edges, held by a fine trek line on both sides that swells and thins with the brush
-  function ribbon(ax, ay, bx, by, hw, seed) {
-    const len = Math.hypot(bx - ax, by - ay), ux = (bx - ax) / len, uy = (by - ay) / len, nx = -uy, ny = ux, k = Math.max(14, Math.round(len / 8));
-    const wob = (t, s) => hw * (0.06 * Math.sin(6.283 * (1.3 * t + s * 0.37)) + 0.03 * Math.sin(6.283 * (3.7 * t + s * 0.71)));
-    const press = (t, s) => 0.62 + 0.38 * Math.sin(6.283 * (2.3 * t + s * 0.53)) * Math.cos(6.283 * (0.8 * t + s * 0.29)); // 0.24 .. 1
-    const lw = Math.max(0.7, hw * 0.12), pw = hw * 0.36;
-    const side = [[], []], pool = [[], []], trek = [[[], []], [[], []]];
-    for (let j = 0; j <= k; j++) {
-      const t = j / k, px = ax - ux * hw + (bx - ax + 2 * ux * hw) * t, py = ay - uy * hw + (by - ay + 2 * uy * hw) * t;
-      for (let sd = 0; sd < 2; sd++) {
-        const sg = sd ? -1 : 1, w = hw + wob(t, seed + sd * 5), th = lw * (0.55 + 0.45 * press(t, seed + sd * 3));
-        const at = (o) => [f2(px + sg * nx * o), f2(py + sg * ny * o)];
-        side[sd].push(at(w)); pool[sd].push(at(w - pw / 2)); trek[sd][0].push(at(w + th / 2)); trek[sd][1].push(at(w - th / 2));
-      }
+  // a diagonal as one fine painted line (a 'trek' line) through the middle of its tiles, under the digits: thin and a
+  // little uneven, like a brush, so it never reads as a band or competes with the row/column/box highlight
+  function diagArt(q, anti, seed) {
+    const cw = q.cw, ch = q.ch || q.cw, end = cw * 0.16;
+    const x0 = anti ? q.X(8) + cw - end : q.X(0) + end, x1 = anti ? q.X(0) + end : q.X(8) + cw - end;
+    const y0 = q.Y(0) + end * (ch / cw), y1 = q.Y(8) + ch - end * (ch / cw);
+    const len = Math.hypot(x1 - x0, y1 - y0), ux = (x1 - x0) / len, uy = (y1 - y0) / len, nx = -uy, ny = ux;
+    const base = Math.max(0.75, cw * 0.03), n = 36, L = [], R = [];
+    for (let j = 0; j <= n; j++) {
+      const t = j / n, taper = Math.min(1, t * 9, (1 - t) * 9);
+      const w = base * taper * (0.72 + 0.28 * Math.sin(6.283 * (1.7 * t + seed * 0.37)) * Math.cos(6.283 * (0.6 * t + seed * 0.21)));
+      const px = x0 + (x1 - x0) * t, py = y0 + (y1 - y0) * t;
+      L.push(`${f2(px + nx * w)} ${f2(py + ny * w)}`); R.push(`${f2(px - nx * w)} ${f2(py - ny * w)}`);
     }
-    const pts = (a) => a.map((p) => p.join(' ')).join('L');
-    return `<path class="vx-wash" d="M${pts(side[0])}L${pts(side[1].slice().reverse())}Z"/>` +
-      pool.map((p) => `<path class="vx-pool" stroke-width="${f2(pw)}" d="M${pts(p)}"/>`).join('') +
-      trek.map(([o, i]) => `<path class="vx-trek" d="M${pts(o)}L${pts(i.slice().reverse())}Z"/>`).join('');
+    return `<path class="vx-trek" d="M${L.join('L')}L${R.reverse().join('L')}Z"/>`;
   }
-  const band = (ax, ay, bx, by, hw, seed) => { const rb = ribbon(ax, ay, bx, by, hw, seed); return `<g class="vx-band"><g class="vx-b0">${rb}</g><g class="vx-b1">${rb}</g></g>`; };
+  const band = (q, anti, seed) => { const rb = diagArt(q, anti, seed); return `<g class="vx-band"><g class="vx-b0">${rb}</g><g class="vx-b1">${rb}</g></g>`; };
   function entry() { // the layers arrive with the rising tiles of a new game
     if (reduced()) return;
     wrapEl.classList.remove('vx-in'); void wrapEl.offsetWidth; wrapEl.classList.add('vx-in');
@@ -14237,8 +14239,7 @@ function variantLabel(g) { return vxApi ? vxApi.label(g || G) : ''; }
     const m = Math.max(2.6, q.cw * 0.085);
     wrapEl.style.setProperty('--vxm', f2(m) + 'px');
     if (cur.kind === 'diagonal') {
-      const hw = q.cw * 0.34, x1 = q.x0 + q.W, y1 = q.y0 + q.H;
-      under.innerHTML = `<defs><clipPath id="vxClip"><rect x="${f2(q.x0)}" y="${f2(q.y0)}" width="${f2(q.W)}" height="${f2(q.H)}" rx="${f2(q.rad)}"/></clipPath></defs><g clip-path="url(#vxClip)">${band(q.x0, q.y0, x1, y1, hw, 1)}${band(x1, q.y0, q.x0, y1, hw, 4)}</g>`;
+      under.innerHTML = `<defs><clipPath id="vxClip"><rect x="${f2(q.x0)}" y="${f2(q.y0)}" width="${f2(q.W)}" height="${f2(q.H)}" rx="${f2(q.rad)}"/></clipPath></defs><g clip-path="url(#vxClip)">${band(q, 0, 1)}${band(q, 1, 4)}</g>`;
       bands = [...under.querySelectorAll('.vx-band')];
     } else {
       over.innerHTML = cur.cages.map((c, k) => { const h = c.cells[0]; return `<g class="vx-cage" style="--d:${(E.ROW(h) + E.COL(h)) * 24}ms">${cageLines(c, q, m, chips[k] && chips[k].offsetWidth ? [chips[k].offsetWidth, chips[k].offsetHeight] : null)}</g>`; }).join('');
@@ -14406,7 +14407,7 @@ function variantLabel(g) { return vxApi ? vxApi.label(g || G) : ''; }
   /* ---------- small painted pictures: card icons and the rules card ---------- */
   function icon(kind) {
     const tile = '<rect class="vi-t" x="1.5" y="1.5" width="37" height="37" rx="8.5"/><path class="vi-g" d="M14 2v36M26 2v36M2 14h36M2 26h36"/>';
-    if (kind === 'diagonal') return `<svg viewBox="0 0 40 40">${tile}<path class="vi-w" d="M3.5 7.8 7.8 3.5 36.5 32.2 32.2 36.5ZM32.2 3.5 36.5 7.8 7.8 36.5 3.5 32.2Z"/><path class="vi-l" d="M5 5 35 35M35 5 5 35"/></svg>`;
+    if (kind === 'diagonal') return `<svg viewBox="0 0 40 40">${tile}<path class="vi-l" d="M6 6 34 34M34 6 6 34"/></svg>`;
     return `<svg viewBox="0 0 40 40">${tile}<path class="vi-d" d="M5.5 5.5H34.5V22.5H22.5V34.5H5.5Z"/><rect class="vi-c" x="4" y="4" width="12.5" height="9" rx="2"/><text class="vi-n" x="10.25" y="11.2">17</text></svg>`;
   }
   function rulesArt(kind) {
@@ -14414,7 +14415,7 @@ function variantLabel(g) { return vxApi ? vxApi.label(g || G) : ''; }
       const C = 15, P = 6, Wd = 9 * C + 2 * P, cx = (c) => P + c * C, main = [9, 6, 4, 1, 8, 3, 2, 7, 5], anti = [3, 9, 5, 2, 8, 4, 7, 1, 6]; // both diagonals of a real solved X-sudoku
       let grid = ''; for (let k = 1; k < 9; k++) grid += `<path class="${k % 3 ? 'ra-g' : 'ra-G'}" d="M${cx(k)} ${P}V${P + 9 * C}M${P} ${cx(k)}H${P + 9 * C}"/>`;
       let dg = ''; for (let k = 0; k < 9; k++) { dg += `<text class="ra-v" x="${cx(k) + C / 2}" y="${cx(k) + C * 0.72}">${main[k]}</text>`; if (k !== 4) dg += `<text class="ra-v" x="${cx(8 - k) + C / 2}" y="${cx(k) + C * 0.72}">${anti[k]}</text>`; }
-      return `<svg viewBox="0 0 ${Wd} ${Wd}" role="img" aria-hidden="true"><defs><clipPath id="vxRaClip"><rect x="${P - 1}" y="${P - 1}" width="${9 * C + 2}" height="${9 * C + 2}" rx="6"/></clipPath></defs><rect class="ra-b" x="${P - 2}" y="${P - 2}" width="${9 * C + 4}" height="${9 * C + 4}" rx="7"/>${grid}<g clip-path="url(#vxRaClip)">${band(P, P, P + 9 * C, P + 9 * C, C * 0.34, 1)}${band(P + 9 * C, P, P, P + 9 * C, C * 0.34, 4)}</g>${dg}</svg>`;
+      return `<svg viewBox="0 0 ${Wd} ${Wd}" role="img" aria-hidden="true"><defs><clipPath id="vxRaClip"><rect x="${P - 1}" y="${P - 1}" width="${9 * C + 2}" height="${9 * C + 2}" rx="6"/></clipPath></defs><rect class="ra-b" x="${P - 2}" y="${P - 2}" width="${9 * C + 4}" height="${9 * C + 4}" rx="7"/>${grid}<g clip-path="url(#vxRaClip)">${band({ X: cx, Y: cx, cw: C, ch: C }, 0, 1)}${band({ X: cx, Y: cx, cw: C, ch: C }, 1, 4)}</g>${dg}</svg>`;
     }
     // four columns by three rows of a killer board: three cages filled in, two still open
     const C = 34, P = 6, cols = 4, rows = 3, gx = (c) => P + c * C;
@@ -14616,7 +14617,7 @@ function variantLabel(g) { return vxApi ? vxApi.label(g || G) : ''; }
 //   'Volgende puzzel' after a variant win.
 // - The menu's bottom row pairs De Tegelreis (H2) with Varianten as two compact cards (hidden on the very first launch).
 {
-  const I1_ICON = '<svg viewBox="0 0 40 40"><rect class="vi-t" x="1.5" y="1.5" width="37" height="37" rx="8.5"/><path class="vi-g" d="M14 2v36M26 2v36M2 14h36M2 26h36"/><path class="vi-w" d="M3.5 7.8 7.8 3.5 36.5 32.2 32.2 36.5Z"/><path class="vi-l" d="M5 5 35 35"/><path class="vi-d" d="M17.5 26.5H34.5V34.5H17.5Z"/><rect class="vi-c" x="19" y="24.2" width="11.5" height="8.2" rx="2"/><text class="vi-n" x="24.75" y="30.6">17</text></svg>';
+  const I1_ICON = '<svg viewBox="0 0 40 40"><rect class="vi-t" x="1.5" y="1.5" width="37" height="37" rx="8.5"/><path class="vi-g" d="M14 2v36M26 2v36M2 14h36M2 26h36"/><path class="vi-l" d="M6 6 34 34"/><path class="vi-d" d="M17.5 26.5H34.5V34.5H17.5Z"/><rect class="vi-c" x="19" y="24.2" width="11.5" height="8.2" rx="2"/><text class="vi-n" x="24.75" y="30.6">17</text></svg>';
   const vSheet = $('#variantSheet'), vBody = vSheet && vSheet.querySelector('.sheet');
   const vx = $('#vxSect'); if (vx && vBody) vBody.appendChild(vx);
   const openVariants = () => { if (vBody) open('#variantSheet'); };
