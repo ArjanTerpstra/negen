@@ -3199,6 +3199,11 @@ body:not(.done) .h3-dshare{display:none}
 @media (hover:none) and (pointer:coarse){.kbd-only{display:none}}
 .j1-bn{display:block;margin-top:3px;font-size:11px;font-weight:600;line-height:1.2;color:var(--ink3)}
 .jr-mu.locked.jr-ready .sp>.jr-s,.jr-big.jr-ready .jr-bt.locked.sp>.jr-s{opacity:.3}
+/* notes mode at night: the keys' four corner motifs lost their size and position to the notes fill and tiled across
+   the whole key; like the light keys, a notes key is a plain soft glaze */
+[data-theme=dark] .notesmode .key:not(.locked){background-image:none}
+.notesmode .key small{font-size:9px;opacity:.72}
+.tbset .tbcnt{margin-left:4px;font-size:11.5px;font-weight:700;color:var(--ink3);letter-spacing:.02em}
 /* -- */
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
@@ -3768,7 +3773,7 @@ const T = {
     levelDesc: { easy: 'Ontspannen, alleen singles', medium: 'Kandidaten wegstrepen', hard: 'Paren en vergrendelde kandidaten', expert: 'X-Wing, Y-Wing, Skyscraper', master: 'Ketens, Swordfish, W-Wing' },
     best: 'Beste', mistakes: 'Fouten', mistakesOff: 'Foutcontrole uit', hintsUsed: 'Hints', time: 'Tijd',
     played: 'Gespeeld', won: 'Opgelost', streak: 'Reeks', bestTime: 'Beste', avgTime: 'Gem.', trend: 'Verloop', trendNote: 'Verloop: je laatste tijden zonder hints. Lager is sneller.', welcome: 'Welkom bij Negen', welcomeSub: 'Sudoku zoals het hoort: rustig, eerlijk en altijd op te lossen met logica.', w1: 'Tik een vakje, kies een cijfer', w1s: 'Elke rij, kolom en elk blok krijgt 1 t/m 9 precies één keer.', w2: 'Notities voor twijfelgevallen', w2s: 'Zet Notities aan om kleine kandidaten te noteren, of houd de Notities-knop ingedrukt terwijl je cijfers tikt.', w3: 'Vast? Vraag een hint', w3s: 'Eerst een duwtje, dan de uitleg. Je leert elke techniek.', start: 'Start een makkelijke puzzel', dailyStreak: 'Dagreeks',
-    winTitles: ['Lekker gedaan!', 'Mooi opgelost!', 'Sterk gespeeld!', 'Indrukwekkend!', 'Meesterlijk!'], viewBoard: 'Bekijk bord', withHelp: 'Opgelost met hulp', newShort: 'Nieuwe puzzel', avgWas: 'gem. {t}', newBest: 'Nieuw persoonlijk record',
+    winTitles: ['Lekker gedaan!', 'Mooi opgelost!', 'Sterk gespeeld!', 'Indrukwekkend!', 'Meesterlijk!'], viewBoard: 'Bekijk bord', withHelp: 'Samen opgelost!', newShort: 'Nieuwe puzzel', avgWas: 'gem. {t}', newBest: 'Nieuw persoonlijk record',
     dayStreak: '🔥 {n} dag', dayStreaks: '🔥 {n} dagen', dailyDone: 'Vandaag opgelost ✓', dailyWin: 'Puzzel van de dag ✓', notPlayed: 'Nog niet gespeeld', dailies: 'Dagpuzzels', lgSolved: 'opgelost', lgStarted: 'begonnen', lgNot: 'nog niet', gotIt: 'Begrepen', coach: 'Tip: houd een cijfer ingedrukt om het vast te zetten. Tik dan alle vakjes waar het moet.', nextDaily: 'Nieuwe puzzel over {t}', shareRes: 'Deel resultaat', toastResCopied: 'Resultaat gekopieerd', mistakesShort: 'fouten',
     s_theme: 'Thema', s_themeSub: 'Licht, donker of automatisch', t_auto: 'Auto', t_light: 'Licht', t_dark: 'Donker',
     s_lang: 'Taal', s_langSub: 'Language',
@@ -4391,7 +4396,7 @@ const T = {
     levelDesc: { easy: 'Relaxed, singles only', medium: 'Eliminating candidates', hard: 'Pairs and locked candidates', expert: 'X-Wing, Y-Wing, Skyscraper', master: 'Chains, Swordfish, W-Wing' },
     best: 'Best', mistakes: 'Mistakes', mistakesOff: 'Mistake check off', hintsUsed: 'Hints', time: 'Time',
     played: 'Played', won: 'Solved', streak: 'Streak', bestTime: 'Best', avgTime: 'Avg', trend: 'Trend', trendNote: 'Trend: your latest hint-free times. Lower is faster.', welcome: 'Welcome to Negen', welcomeSub: 'Sudoku as it should be: calm, fair and always solvable with logic.', w1: 'Tap a cell, pick a digit', w1s: 'Every row, column and box gets 1 to 9 exactly once.', w2: 'Notes for the tricky ones', w2s: 'Turn on Notes to pencil in small candidates, or hold the Notes button while tapping digits.', w3: 'Stuck? Ask for a hint', w3s: 'First a nudge, then the explanation. You learn every technique.', start: 'Start an easy puzzle', dailyStreak: 'Daily streak',
-    winTitles: ['Nicely done!', 'Well solved!', 'Strong play!', 'Impressive!', 'Masterful!'], viewBoard: 'View board', withHelp: 'Solved with help', newShort: 'New puzzle', avgWas: 'avg {t}', newBest: 'New personal best',
+    winTitles: ['Nicely done!', 'Well solved!', 'Strong play!', 'Impressive!', 'Masterful!'], viewBoard: 'View board', withHelp: 'Solved together!', newShort: 'New puzzle', avgWas: 'avg {t}', newBest: 'New personal best',
     dayStreak: '🔥 {n} day', dayStreaks: '🔥 {n} days', dailyDone: 'Solved today ✓', dailyWin: 'Daily puzzle ✓', notPlayed: 'Not played yet', dailies: 'Daily puzzles', lgSolved: 'solved', lgStarted: 'started', lgNot: 'not yet', gotIt: 'Got it', coach: 'Tip: long-press a digit to lock it, then tap every cell where it goes.', nextDaily: 'New puzzle in {t}', shareRes: 'Share result', toastResCopied: 'Result copied', mistakesShort: 'mistakes',
     s_theme: 'Theme', s_themeSub: 'Light, dark or automatic', t_auto: 'Auto', t_light: 'Light', t_dark: 'Dark',
     s_lang: 'Language', s_langSub: 'Taal',
@@ -8318,7 +8323,7 @@ const icon = (s) => `<svg class="tbi" viewBox="0 0 16 16" aria-hidden="true"><us
 const setHTML = (cur) => {
   const b = book();
   // the five little tiles say it on their own; the count is read out through the set's label
-  return SCN.map((s) => `<i class="${b.seen[s] ? 'on' : ''}${s === cur ? ' cur' : ''}">${icon(s)}</i>`).join('');
+  return SCN.map((s) => `<i class="${b.seen[s] ? 'on' : ''}${s === cur ? ' cur' : ''}">${icon(s)}</i>`).join('') + `<b class="tbcnt" aria-hidden="true">${SCN.filter((s) => b.seen[s]).length}/${SCN.length}</b>`; // J1: the count is shown too
 };
 const setAria = () => { const b = book(); return fmt(L.tbSetAria || '{n}/{t}', { n: SCN.filter((s) => b.seen[s]).length, t: SCN.length }); };
 
