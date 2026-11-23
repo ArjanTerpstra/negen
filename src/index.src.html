@@ -3231,6 +3231,30 @@ body:not(.done) .h3-dshare{display:none}
 #winSheet #winX::after{content:"";position:absolute;inset:-5px}
 #winSheet #winX svg{width:18px;height:18px}
 #winSheet .tbk{margin-inline:34px}
+/* a hint on a phone docks in the place of the tool row, between the board and the keys: the board and the keys stay
+   exactly where they are (they used to shrink and slide down while a hint was open). A long explanation scrolls
+   inside the panel, with a soft fade while there is more below. */
+/* the home-screen app on a tall phone (874 high, 778 usable): the keys were 2px too tall, so the page could scroll a hair */
+@media (max-width:520px) and (min-height:801px){html.f4-short body:not(.hinting) .pad .key{height:min(calc((var(--cell) * 9 - 20px) / 5 * 1.1),calc(8.6dvh - 1.6px))}}
+/* ...and on the widest phones (Pro Max) the air under the keys was planned for a smaller board: the page was 18px too
+   tall. The air gives way by exactly what is measured too much (--i1-trim, set below). */
+@media (max-width:520px) and (min-height:801px){body:not(.hinting) .right{padding-bottom:max(0px,calc(var(--f4-room) * .46 - var(--i1-trim,0px)))}}
+@media (max-width:860px){
+  body.hintdock .right{position:relative}
+  body.hintdock .right>.tools{visibility:hidden;transition:visibility 0s .24s}
+  body.hintdock .hintbox.show{position:absolute;left:0;right:0;z-index:7;max-height:none;padding:8px 12px 7px;gap:2px;overflow:hidden}
+  body.hintdock .hintbox .ht{padding-right:166px;min-height:32px;font-size:15px}
+  body.hintdock .hintbox #hintTitle{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  body.hintdock .hintbox .row{position:absolute;top:7px;right:9px}
+  body.hintdock .hintbox .row .btn{padding:7px 11px;font-size:13px;min-height:0}
+  body.hintdock .hintbox p{flex:1 1 auto;min-height:0;max-height:none;overflow:auto;overscroll-behavior:contain;font-size:14px;line-height:1.4}
+  body.hintdock .hintbox.ovf p{-webkit-mask-image:linear-gradient(#000 calc(100% - 1.3em),rgba(0,0,0,.2));mask-image:linear-gradient(#000 calc(100% - 1.3em),rgba(0,0,0,.2))}
+  body.hintdock .hintbox.tech-isnew .ht{display:grid;grid-template-columns:minmax(0,1fr);align-content:center;justify-items:start;row-gap:3px;padding-top:1px}
+  body.hintdock .hintbox.tech-isnew .ht > svg{display:none}
+  body.hintdock .hintbox.tech-isnew #hintTitle{max-width:none;white-space:normal;overflow:visible;text-overflow:clip;font-size:15px;line-height:1.13;text-wrap:balance}
+  body.hintdock .hintbox .tech-new{margin:0;padding:1px 7px 1px 6px;font-size:9.5px;line-height:1.35;letter-spacing:.07em}
+  body.hintdock .hintbox .tech-new::before{font-size:10px}
+}
 /* -- */
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
@@ -14753,6 +14777,42 @@ function variantLabel(g) { return vxApi ? vxApi.label(g || G) : ''; }
   const as1 = applySettings;
   applySettings = function () { const r = as1.apply(this, arguments); i1Duo(); return r; };
   i1Duo();
+}
+// A hint on a phone docks in the place of the tool row (see the css above): from just under the board to just above
+// the keys, measured in the right column, so the keys keep their size and place. Wider screens keep the old panel.
+{
+  const narrow = matchMedia('(max-width:860px)'), box = $('#hintbox'), right = $('#right'), pad = $('#pad'), txt = $('#hintText');
+  const fade = () => box.classList.toggle('ovf', txt.scrollHeight - txt.scrollTop - txt.clientHeight > 6); // a few px of line leading is not more text
+  // a short screen (an iPhone SE, or Safari with its bars on a small iPhone) has too little room there for a title and two
+  // lines: it keeps the old panel, which makes room by shrinking the keys
+  const dock = () => {
+    const cl = document.body.classList;
+    let on = !!hint && narrow.matches;
+    if (on) { // measured in the playing layout (the old panel's class comes off first)
+      cl.remove('hinting'); cl.add('hintdock');
+      const top = -6, below = pad.offsetParent === right ? pad.offsetTop : pad.getBoundingClientRect().top - right.getBoundingClientRect().top, h = below - 8 - top;
+      if (h < 92) on = false; else { box.style.top = top + 'px'; box.style.height = h + 'px'; }
+    }
+    cl.toggle('hintdock', on); cl.toggle('hinting', !!hint && !on);
+    if (!on) { box.style.top = box.style.height = ''; box.classList.remove('ovf'); return; }
+    fade();
+  };
+  const rh = renderHint;
+  renderHint = function () { const r = rh.apply(this, arguments); try { txt.scrollTop = 0; dock(); } catch (e) { console.warn('hint dock', e); } return r; };
+  txt.addEventListener('scroll', fade, { passive: true });
+  box.addEventListener('toggle', () => requestAnimationFrame(fade), true); // the explanation behind "Waarom?" opens
+  narrow.addEventListener('change', dock); addEventListener('resize', dock);
+  if (document.fonts) document.fonts.ready.then(() => { if (hint) dock(); });
+  // the game screen never scrolls: if it comes out taller than the screen, the air under the keys gives way
+  const root = document.documentElement, app = document.querySelector('.app');
+  let trim = 0;
+  const fitPlay = () => {
+    if (!narrow.matches || !app) { if (trim) { trim = 0; root.style.removeProperty('--i1-trim'); } return; }
+    const over = app.offsetHeight - innerHeight;
+    if (over > 0.5) { trim += Math.ceil(over); root.style.setProperty('--i1-trim', trim + 'px'); }
+  };
+  if (app && window.ResizeObserver) new ResizeObserver(fitPlay).observe(app);
+  addEventListener('resize', () => { trim = 0; root.style.removeProperty('--i1-trim'); fitPlay(); });
 }
 /* -- */
 
