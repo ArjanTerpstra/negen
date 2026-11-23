@@ -1699,6 +1699,14 @@ body.hm-on .app{max-height:100dvh;overflow:hidden}
 .g1-fl.sm use{stroke-width:0;fill-opacity:.22}
 .g1-fl.sm use.on{fill-opacity:1}
 .g1-fl.sm .d{display:none}
+/* the petals still to come are only the pounced underdrawing (a dotted line), so the painted ones count at a glance */
+.g1-fl:not(.sm) use:not(.on){fill-opacity:0;stroke-opacity:.55;stroke-width:1.4;stroke-linecap:round;stroke-dasharray:0 2.4}
+.g1-tile:is(.g1-k0,.g1-k1,.g1-k2) .g1-fl .d{display:none}
+.g1-orn circle{fill:currentColor;fill-opacity:.5}
+[data-theme=dark] .g1-orn circle{fill-opacity:.42}
+.g1-lv[aria-checked=true] .g1-orn circle{fill-opacity:.6}
+.g1-tile .g1-rg{inset:9%;width:82%;height:82%}
+.g1-rg circle{fill:none;stroke:currentColor;stroke-width:1.15;stroke-opacity:.66}
 .g1-go{position:relative;z-index:1;display:flex;align-items:center;gap:12px;margin-top:9px;padding-left:5px}
 .g1-desc{flex:1;min-width:0;margin:0;display:flex;flex-direction:column;gap:2px}
 .g1-desc>b{display:flex;align-items:baseline;gap:8px;min-width:0;font-family:var(--display);font-size:17px;font-weight:650;line-height:1.15;letter-spacing:-.01em;color:var(--ink);font-variation-settings:"SOFT" 60,"opsz" 72}
@@ -2345,7 +2353,7 @@ html.g2-xf *,html.g2-xf *::before,html.g2-xf *::after{transition:background-colo
 /* the week: seven squares for the last seven days, today last; a painted square is a daily solved on its own day */
 .md-wk{display:flex;gap:4px}
 .md-wk i{position:relative;display:grid;place-items:center;width:var(--wk,19px);height:var(--wk,19px);border-radius:5px;background:color-mix(in oklab,var(--surface) 70%,var(--surface2));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink3) 45%,transparent),0 1px 0 color-mix(in srgb,var(--ink) 8%,transparent)}
-.md-wk i b{font-size:9.5px;font-weight:800;color:var(--ink2);line-height:1;text-transform:uppercase}
+.md-wk i b{font-size:9px;font-weight:800;font-style:normal;color:var(--ink2);line-height:1;letter-spacing:-.02em;text-transform:lowercase}
 .md-wk i.on{background:radial-gradient(90% 80% at 30% 20%,color-mix(in oklab,var(--accent) 55%,white),transparent 60%),var(--accent);box-shadow:0 1px 0 color-mix(in oklab,var(--accent) 55%,black)}
 .md-wk i.on b{color:color-mix(in oklab,var(--surface) 94%,var(--accent))}
 /* today: a dot under its square (a ring while it is still open) */
@@ -3204,6 +3212,25 @@ body:not(.done) .h3-dshare{display:none}
 [data-theme=dark] .notesmode .key:not(.locked){background-image:none}
 .notesmode .key small{font-size:9px;opacity:.72}
 .tbset .tbcnt{margin-left:4px;font-size:11.5px;font-weight:700;color:var(--ink3);letter-spacing:.02em}
+/* a hint: the unit and the cell in question washed in manganese in every box (the per-box glazes used to win in six
+   of the nine), and the digits that rule the other cells out in the hint colour on a stronger wash */
+.box:nth-child(n) .cell.h-unit{background-color:var(--hint-soft)}
+.box:nth-child(n) .cell.h-focus{background-color:color-mix(in oklab,var(--hint) 30%,var(--surface))}
+.box:nth-child(n) .cell.h-src{background-color:color-mix(in oklab,var(--hint) 20%,var(--surface))}
+[data-theme=dark] .box:nth-child(n) .cell.h-src{background-color:color-mix(in oklab,var(--hint) 34%,var(--g2-dcell,#0f2263))!important}
+.box:nth-child(n) .cell.h-src .v{color:var(--hint)}
+/* and from each of them a thin painted ray to the cell it rules out, which gets a small cross */
+.links path.ray-h{stroke:var(--surface);stroke-width:5;opacity:.5;stroke-dasharray:100;stroke-dashoffset:100;animation:lkdraw .5s cubic-bezier(.3,.7,.3,1) forwards}
+.links path.ray{stroke:var(--hint);stroke-width:2.2;opacity:.85;stroke-dasharray:100;stroke-dashoffset:100;animation:lkdraw .5s cubic-bezier(.3,.7,.3,1) forwards}
+.links path.rx{stroke:var(--hint);stroke-width:2.2;opacity:.9;animation:fade .25s both}
+@media (prefers-reduced-motion:reduce){.links path:is(.ray,.ray-h){animation:none;stroke-dashoffset:0}.links path.rx{animation:none}}
+/* the win card: two actions, Delen and the next puzzle; the board is behind the cross, the stats are in the header */
+#winSheet .actions>#winView,#winSheet .actions>#winStatsBtn{display:none!important}
+#winSheet .win{position:relative}
+#winSheet #winX{position:absolute;top:9px;right:9px;z-index:5;float:none;margin:0;width:36px;height:36px;color:var(--ink2)}
+#winSheet #winX::after{content:"";position:absolute;inset:-5px}
+#winSheet #winX svg{width:18px;height:18px}
+#winSheet .tbk{margin-inline:34px}
 /* -- */
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
@@ -3693,7 +3720,7 @@ body:not(.done) .h3-dshare{display:none}
   </div>
   <div class="sect" style="margin-top:16px" data-i18n="prefs"></div>
   <div id="settingsList"></div>
-  <p class="buildstamp">Negen · v2026.11.22-2200</p>
+  <p class="buildstamp">Negen · v2026.11.23-0918</p>
 </div></div>
 
 <!-- Stats -->
@@ -3715,6 +3742,7 @@ body:not(.done) .h3-dshare{display:none}
 
 <!-- Win -->
 <div class="scrim" id="winSheet"><div class="sheet win" role="dialog" aria-modal="true">
+  <button class="iconbtn x" id="winX" aria-label="Bekijk bord"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   <div class="trophy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></div>
   <h2 id="winTitle"></h2>
   <div class="big" id="winTime"></div>
@@ -4291,13 +4319,13 @@ const T = {
     toastLocked: '{d} vastgezet · tik op cellen', toastGiven: 'Dit cijfer hoort bij de puzzel',
     toastRestart: 'Puzzel opnieuw gestart', confirmRestart: 'Weet je het zeker? Druk nog een keer om opnieuw te beginnen.',
     kbd: '<kbd>1</kbd>–<kbd>9</kbd> invullen · <kbd>⇧</kbd>+cijfer notitie · <kbd>N</kbd> notities<br><kbd>⌫</kbd> wissen · <kbd>Z</kbd> terug · <kbd>H</kbd> hint · <kbd>P</kbd> pauze',
-    hintNudge: 'Bekijk', hintShow: 'Laat zien', hintApply: 'Toepassen', why: 'Waarom?', remove: 'Wegstrepen', hintGotIt: 'Begrepen',
+    hintNudge: 'Bekijk', hintShow: 'Laat zien', hintApply: 'Toepassen', why: 'Waarom?', remove: 'Wegstrepen', elimMany: 'de {n} gemarkeerde vakjes', hintGotIt: 'Begrepen',
     help: `<p><b>Doel.</b> Vul het rooster zo dat elke rij, elke kolom en elk blok van 3×3 de cijfers 1 t/m 9 precies één keer bevat.</p>
 <p><b>Invullen.</b> Tik op een cel en daarna op een cijfer. Of houd een cijfer onder in ingedrukt om het vast te zetten, en tik daarna op alle cellen waar het moet.</p>
 <p><b>Notities.</b> Zet Notities aan om kleine kandidaten te noteren, of houd de Notities-knop ingedrukt terwijl je cijfers tikt. Sleep over meerdere cellen om ze tegelijk te selecteren voor notities.</p>
 <p><b>Hints.</b> Een hint geeft niet zomaar het antwoord. Eerst krijg je een duwtje (waar kijken), dan de uitleg van de techniek, en pas daarna kun je hem toepassen. Zo word je zelf beter.</p>
 <p><b>Niveaus.</b> Moeilijkheid wordt bepaald door de technieken die nodig zijn, niet door het aantal gegeven cijfers.</p>`,
-    from: 'uit', level: 'Niveau', cell: 'R{r}K{c}', row: 'rij {n}', col: 'kolom {n}', box: 'blok {n}', and: 'en',
+    from: 'uit', level: 'Niveau', cell: 'rij {r} kolom {c}', row: 'rij {n}', col: 'kolom {n}', box: 'blok {n}', and: 'en',
     techTier: 'Techniek:', hl: { 0: 'Basis', 1: 'Basis', 2: 'Gevorderd', 3: 'Expert', 4: 'Meester' },
     tech: {
       mistake: 'Er klopt iets niet',
@@ -4320,7 +4348,7 @@ const T = {
     explain: {
       mistake: '{cells} {verb} niet goed. {apply}', verbOne: 'is', verbMany: 'zijn', applyOne: 'Toepassen wist dit vakje.', applyMany: 'Toepassen wist deze vakjes.',
       noteMissing: 'In {cell} heb je {d} weggestreept, maar {d} is daar nog wel mogelijk. Door Toepassen zet ik hem terug.',
-      fullHouse: '{unit} heeft nog maar één leeg vakje. Het enige ontbrekende cijfer is <b>{d}</b>, dus {cell} = {d}.',
+      fullHouse: '{unit} heeft nog maar één leeg vakje. Het enige ontbrekende cijfer is <b>{d}</b>, dus de {d} komt in {cell}.',
       hiddenSingle: 'In {unit} kan de <b>{d}</b> maar op één plek: {cell}. Alle andere lege vakjes zien al een {d} in hun rij, kolom of blok.',
       nakedSingle: 'Kijk naar {cell}. Alle cijfers behalve <b>{d}</b> komen al voor in de rij, kolom of het blok. Dus hier moet een {d}.',
       pointing: 'In {unit1} staat de <b>{d}</b> alleen nog in {unit2}. Dus moet de {d} van {unit2} in dit blok vallen, en kun je {d} wegstrepen uit de rest van {unit2}.',
@@ -4487,6 +4515,7 @@ const T = {
     g1PickCur: 'nu',
     g1PickMore: 'Dagpuzzel & code',
     g1LvlAria: '{lvl}. Kies een ander niveau',
+    g1Mood: { easy: 'Rustig beginnen', medium: 'Even nadenken', hard: 'Echt puzzelen', expert: 'Voor kenners', master: 'De zwaarste proef' }, g1Sub: { easy: 'Alleen singles' },
     g1Medals: 'Prestaties',
     g1Colors: 'Kleuren',
     /* -- */
@@ -4848,7 +4877,7 @@ const T = {
     vxT_innieOutie: '45-verschil',
     vxT_cageLocked: 'Kooi wijst',
     vxT_cageClaim: 'Kooi claimt',
-    vxE_fullHouse: 'In {unit} ontbreekt alleen nog de <b>{d}</b>, dus {cell} = {d}',
+    vxE_fullHouse: 'In {unit} ontbreekt alleen nog de <b>{d}</b>, en die komt in {cell}',
     vxE_hiddenSingle: 'In {unit} kan de <b>{d}</b> alleen nog in {cell}',
     vxE_nakedSingleD: 'In {cell} past alleen nog de <b>{d}</b>: de andere cijfers staan al in de rij, de kolom, het blok of op de diagonaal',
     vxE_nakedSingleK: 'In {cell} past alleen nog de <b>{d}</b>: de andere cijfers staan al in de rij, de kolom, het blok of de kooi',
@@ -4914,13 +4943,13 @@ const T = {
     toastLocked: '{d} locked · tap cells', toastGiven: 'This digit is part of the puzzle',
     toastRestart: 'Puzzle restarted', confirmRestart: 'Are you sure? Tap again to restart.',
     kbd: '<kbd>1</kbd>–<kbd>9</kbd> place · <kbd>⇧</kbd>+digit note · <kbd>N</kbd> notes<br><kbd>⌫</kbd> erase · <kbd>Z</kbd> undo · <kbd>H</kbd> hint · <kbd>P</kbd> pause',
-    hintNudge: 'Look', hintShow: 'Show me', hintApply: 'Apply', why: 'Why?', remove: 'Remove', hintGotIt: 'Got it',
+    hintNudge: 'Look', hintShow: 'Show me', hintApply: 'Apply', why: 'Why?', remove: 'Remove', elimMany: 'the {n} marked cells', hintGotIt: 'Got it',
     help: `<p><b>Goal.</b> Fill the grid so every row, every column and every 3×3 box contains the digits 1 to 9 exactly once.</p>
 <p><b>Placing.</b> Tap a cell, then a digit. Or long-press a digit below to lock it, then tap every cell where it belongs.</p>
 <p><b>Notes.</b> Turn on Notes to pencil in small candidates, or hold the Notes button while tapping digits. Drag across cells to select several at once for notes.</p>
 <p><b>Hints.</b> A hint does not just give the answer. First a nudge (where to look), then the technique explained, and only then can you apply it. You get better yourself.</p>
 <p><b>Levels.</b> Difficulty is set by the techniques required, not by the number of givens.</p>`,
-    from: 'from', level: 'Level', cell: 'R{r}C{c}', row: 'row {n}', col: 'column {n}', box: 'box {n}', and: 'and',
+    from: 'from', level: 'Level', cell: 'row {r} column {c}', row: 'row {n}', col: 'column {n}', box: 'box {n}', and: 'and',
     techTier: 'Technique:', hl: { 0: 'Basic', 1: 'Basic', 2: 'Intermediate', 3: 'Expert', 4: 'Master' },
     tech: {
       mistake: 'Something is off', noteMissing: 'A note is missing',
@@ -4942,7 +4971,7 @@ const T = {
     explain: {
       mistake: '{cells} {verb} wrong. {apply}', verbOne: 'is', verbMany: 'are', applyOne: 'Apply erases this cell.', applyMany: 'Apply erases these cells.',
       noteMissing: 'You removed {d} from {cell}, but {d} is still possible there. Apply puts it back.',
-      fullHouse: '{unit} has just one empty cell left. The only missing digit is <b>{d}</b>, so {cell} = {d}.',
+      fullHouse: '{unit} has just one empty cell left. The only missing digit is <b>{d}</b>, so the {d} goes in {cell}.',
       hiddenSingle: 'In {unit}, the <b>{d}</b> fits in only one place: {cell}. Every other empty cell already sees a {d} in its row, column or box.',
       nakedSingle: 'Look at {cell}. Every digit except <b>{d}</b> already appears in its row, column or box. So it must be {d}.',
       pointing: 'In {unit1}, the <b>{d}</b> can only be in {unit2}. So the {d} of {unit2} must be in this box, and {d} can be removed from the rest of {unit2}.',
@@ -5101,6 +5130,7 @@ const T = {
     g1PickCur: 'now',
     g1PickMore: 'Daily & code',
     g1LvlAria: '{lvl}. Choose another level',
+    g1Mood: { easy: 'An easy start', medium: 'A little thinking', hard: 'Proper puzzling', expert: 'For connoisseurs', master: 'The hardest test' }, g1Sub: { easy: 'Singles only' },
     g1Medals: 'Achievements',
     g1Colors: 'Colours',
     /* -- */
@@ -5462,7 +5492,7 @@ const T = {
     vxT_innieOutie: 'Innie-outie',
     vxT_cageLocked: 'Cage pointing',
     vxT_cageClaim: 'Cage claiming',
-    vxE_fullHouse: '{unit} only misses the <b>{d}</b>, so {cell} = {d}',
+    vxE_fullHouse: '{unit} only misses the <b>{d}</b>, and it goes in {cell}',
     vxE_hiddenSingle: 'In {unit}, the <b>{d}</b> can only go in {cell}',
     vxE_nakedSingleD: 'Only the <b>{d}</b> fits in {cell}: every other digit is already in its row, column, box or diagonal',
     vxE_nakedSingleK: 'Only the <b>{d}</b> fits in {cell}: every other digit is already in its row, column, box or cage',
@@ -5810,12 +5840,63 @@ function placeOrns() {
   const ox = wrap.offsetLeft + wrap.clientLeft, oy = wrap.offsetTop + wrap.clientTop;
   [...wrap.children].forEach((el, k) => { el.style.left = (xs[k % 2] - ox) + 'px'; el.style.top = (ys[k >> 1] - oy) + 'px'; });
 }
+// a hidden single: for each other empty cell of the unit, the digit that rules it out (the nearest one, on its row or
+// column if there is one); one ray per line from that digit to the farthest cell it rules out, and a cross on each
+function hsPlan(s) {
+  if (!s || s.tech !== 'hiddenSingle' || !s.place || !s.units || !G) return null;
+  const d = s.place.digit, groups = new Map(), crosses = [], srcs = new Set();
+  for (const i of E.UNITS[s.units[0]]) {
+    if (G.values[i] || i === s.place.cell) continue;
+    let best = -1, bs = 1e9;
+    for (const p of E.PEERS[i]) if (G.values[p] === d) {
+      const line = E.ROW(p) === E.ROW(i) || E.COL(p) === E.COL(i), sc = Math.abs(E.ROW(p) - E.ROW(i)) + Math.abs(E.COL(p) - E.COL(i)) + (line ? 0 : 20);
+      if (sc < bs) { bs = sc; best = p; }
+    }
+    if (best < 0) continue;
+    const p = best, dir = E.ROW(p) === E.ROW(i) ? 'r' + Math.sign(E.COL(i) - E.COL(p)) : E.COL(p) === E.COL(i) ? 'c' + Math.sign(E.ROW(i) - E.ROW(p)) : 'x' + i, k = p + dir;
+    const g = groups.get(k), far = (q) => Math.abs(E.ROW(q) - E.ROW(p)) + Math.abs(E.COL(q) - E.COL(p));
+    if (!g || far(i) > far(g[1])) groups.set(k, [p, i, dir[0]]);
+    crosses.push(i); srcs.add(p);
+  }
+  return crosses.length ? { d, groups: [...groups.values()], crosses, srcs } : null;
+}
+function raysSvg(s, svg) {
+  const P = hsPlan(s); if (!P) return '';
+  const d = P.d, wr = svg.getBoundingClientRect(), at = (e) => { const r = e.getBoundingClientRect(); return [r.left - wr.left + r.width / 2, r.top - wr.top + r.height / 2, r.width]; };
+  // the ray ends where the digit would sit in the cell it rules out (its note place), and is crossed out there
+  const ctr = (i) => at(cells[i].el), spot = (i) => { const q = at(cells[i].notes[d - 1]); return q[2] ? q : ctr(i); };
+  let h = '', n = 0;
+  for (const [p, i, way] of P.groups) {
+    // along a row or a column the ray keeps to the height (or column) of the note places, so every cross sits on it,
+    // and it passes behind the digits on its way (a gap round each), so none of them looks struck out
+    let [x1, y1, w] = ctr(p); const [x2, y2, wn] = spot(i);
+    if (way === 'r') y1 = y2; else if (way === 'c') x1 = x2;
+    const len = Math.hypot(x2 - x1, y2 - y1) || 1, ux = (x2 - x1) / len, uy = (y2 - y1) / len;
+    let t0 = w * 0.36; const t1 = len - wn * 0.62, cuts = [];
+    if (way === 'r' || way === 'c') {
+      const r0 = E.ROW(p), c0 = E.COL(p), r1 = E.ROW(i), c1 = E.COL(i), steps = Math.max(Math.abs(r1 - r0), Math.abs(c1 - c0));
+      for (let k = 1; k < steps; k++) {
+        const q = (r0 + Math.sign(r1 - r0) * k) * 9 + c0 + Math.sign(c1 - c0) * k;
+        if (G.values[q]) { const [qx, qy] = ctr(q), t = (qx - x1) * ux + (qy - y1) * uy; cuts.push([t - w * 0.3, t + w * 0.3]); }
+      }
+    }
+    const pt = (t) => `${(x1 + ux * t).toFixed(1)} ${(y1 + uy * t).toFixed(1)}`;
+    let dd = '';
+    for (const [a, b] of cuts) { if (a > t0) dd += `M${pt(t0)}L${pt(a)}`; t0 = Math.max(t0, b); }
+    if (t1 > t0) dd += `M${pt(t0)}L${pt(t1)}`;
+    if (!dd) continue;
+    const dl = ` style="animation-delay:${n++ * 90}ms"`;
+    h += `<path class="ray-h" pathLength="100" d="${dd}"${dl}/><path class="ray" pathLength="100" d="${dd}"${dl}/>`;
+  }
+  for (const i of P.crosses) { const [x, y, w] = spot(i), a = Math.min(w * 0.36, 6); h += `<path class="rx" style="animation-delay:${n * 90 + 200}ms" d="M${(x - a).toFixed(1)} ${(y - a).toFixed(1)}L${(x + a).toFixed(1)} ${(y + a).toFixed(1)}M${(x + a).toFixed(1)} ${(y - a).toFixed(1)}L${(x - a).toFixed(1)} ${(y + a).toFixed(1)}"/>`; }
+  return h;
+}
 function drawLinks() {
   placeOrns();
   const svg = $('#links');
   boardEl.classList.toggle('h2', !!(hint && hint.stage === 2));
   const spec = hint && hint.stage === 2 ? linkSpec(hint.step) : null;
-  if (!spec) { svg.innerHTML = ''; return; }
+  if (!spec) { svg.innerHTML = hint && hint.stage === 2 ? raysSvg(hint.step, svg) : ''; return; }
   const wr = svg.getBoundingClientRect();
   const pos = (i, d) => { const r = cells[i].notes[d - 1].getBoundingClientRect(); return [r.left - wr.left + r.width / 2, r.top - wr.top + r.height / 2, r.width]; };
   let mask = '';
@@ -6085,10 +6166,7 @@ function hintVisuals() {
   if (!linked) for (const i of s.cells || []) m.focus.add(i);
   m.linkCells = new Set(linked ? s.cells : []);
   m.src = new Set();
-  if (s.tech === 'hiddenSingle') {
-    const d = s.place.digit;
-    for (const i of E.UNITS[s.units[0]]) if (!G.values[i] && i !== s.place.cell) for (const p of E.PEERS[i]) if (G.values[p] === d) m.src.add(p);
-  }
+  if (s.tech === 'hiddenSingle') { const P = hsPlan(s); if (P) m.src = new Set(P.srcs); }
   if (s.tech === 'nakedSingle') { for (const u of E.CELL_UNITS[s.place.cell]) for (const i of E.UNITS[u]) { m.unit.add(i); if (G.values[i]) m.src.add(i); } }
   if (s.place) { m.target.add(s.place.cell); m.placeAt = s.place.cell; m.placeDigit = s.place.digit; }
   if (s.fix?.erase) s.fix.erase.forEach((i) => m.target.add(i));
@@ -6105,7 +6183,7 @@ function nudgeUnit(s) {
 function explainStep(s) {
   const X = L.explain, D = s.digits || [], cs = s.cells || [], U = (s.units || []).map(unitStr);
   const ds = D.join('/');
-  const elimList = () => { const by = new Map(); for (const e of s.elim || []) { if (!by.has(e.digit)) by.set(e.digit, []); by.get(e.digit).push(e.cell); } return [...by].map(([d, arr]) => `<b>${d}</b> ${L.from} ${listJoin(arr.map((i) => fmt(L.cell, { r: E.ROW(i) + 1, c: E.COL(i) + 1 })))}`).join('; '); };
+  const elimList = () => { const by = new Map(); for (const e of s.elim || []) { if (!by.has(e.digit)) by.set(e.digit, []); by.get(e.digit).push(e.cell); } return [...by].map(([d, arr]) => `<b>${d}</b> ${L.from} ${arr.length > 2 && L.elimMany ? fmt(L.elimMany, { n: arr.length }) : listJoin(arr.map((i) => fmt(L.cell, { r: E.ROW(i) + 1, c: E.COL(i) + 1 })))}`).join('; '); };
   let txt = '';
   switch (s.tech) {
     case 'mistake': txt = fmt(X.mistake, { cells: listJoin(cs.map(cellName)), verb: cs.length > 1 ? X.verbMany : X.verbOne, apply: cs.length > 1 ? X.applyMany : X.applyOne }); break;
@@ -6226,12 +6304,16 @@ function win() {
     techWinChip(fresh);
     $('#winPb').innerHTML += `<div class="chip level" style="display:inline-flex;margin:0 4px 6px"><span class="dot"></span>${L.levels[G.level]}</div>`;
     const avg = st.won ? st.total / st.won : 0;
-    $('#winStats').innerHTML = [G.hints || st.won >= 3 ? [st.won ? fmtTime(avg) : '—', `${L.avgTime} · ${L.levels[G.level]}`] : [st.won, L.won], [G.mistakes, L.mistakes], [G.hints, L.hintsUsed, G.hints ? 'hinted' : '']].map(([a, b, c]) => `<div class="stat ${c || ''}"><b>${a}</b><span>${b}</span></div>`).join('');
+    $('#winX').setAttribute('aria-label', L.viewBoard); $('#winX').title = L.viewBoard;
+    const showAvg = st.won >= 2 && fmtTime(avg) !== fmtTime(G.elapsed); // never the same time twice on the card
+    $('#winStats').innerHTML = [showAvg ? [fmtTime(avg), `${L.avgTime} · ${L.levels[G.level]}`] : [st.won, L.won], [G.mistakes, L.mistakes], [G.hints, L.hintsUsed, G.hints ? 'hinted' : '']].map(([a, b, c]) => `<div class="stat ${c || ''}"><b>${a}</b><span>${b}</span></div>`).join('');
     $('#winSheet').classList.toggle('assisted', !!G.hints);
     open('#winSheet'); if (!G.hints) confetti();
   }, 1100);
 }
 $('#winView').onclick = () => { closeAll(); stopConfetti(); clearInterval(dailyTick); };
+// the cross on the win card does what "Bekijk bord" did (the card keeps two actions: Delen and the next puzzle)
+$('#winX').onclick = () => $('#winView').click();
 $('#doneNew').onclick = () => openNew();
 $('#doneStats').onclick = () => openStats();
 let replayT = 0;
@@ -9425,6 +9507,11 @@ if (window.ResizeObserver) new ResizeObserver(() => { if (state === 'on' || stat
   const FL = [0, 1, 2, 3, 4];
   const flower = (k, small) => `<svg class="g1-fl${small ? ' sm' : ''}" viewBox="0 0 48 48" aria-hidden="true">${FL.map((p) => `<use href="#g1Pet"${p <= k ? ' class="on"' : ''} transform="rotate(${p * 72} 24 24)"/>`).join('')}${small ? '' : FL.map((p) => `<circle class="d" cx="24" cy="6.9" r="1.3" transform="rotate(${p * 72 + 36} 24 24)"/>`).join('')}<circle class="c" cx="24" cy="24" r="2.8"/></svg>`;
   const FANS = '<svg class="g1-orn" viewBox="0 0 48 48" aria-hidden="true"><use href="#g1Fan1"/><use href="#g1Fan1" transform="matrix(-1 0 0 1 48 0)"/><use href="#g1Fan1" transform="matrix(1 0 0 -1 0 48)"/><use href="#g1Fan1" transform="matrix(-1 0 0 -1 48 48)"/></svg>';
+  // the level tiles grow richer with the level: Makkelijk is a plain tile with one petal, then come dots in the corners,
+  // corner fans, a ring of dots round the flower, and for Meester a painted ring as well
+  const DOTS = '<svg class="g1-orn" viewBox="0 0 48 48" aria-hidden="true"><circle cx="6.2" cy="6.2" r="1.8"/><circle cx="41.8" cy="6.2" r="1.8"/><circle cx="6.2" cy="41.8" r="1.8"/><circle cx="41.8" cy="41.8" r="1.8"/></svg>';
+  const RING = '<svg class="g1-rg" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21.2"/></svg>';
+  const tileArt = (k) => (k >= 2 ? FANS : k === 1 ? DOTS : '') + (k >= 4 ? RING : '') + flower(k);
   const segs = (p) => [...Array(9)].map((_, i) => `<i style="--f:${Math.min(1, Math.max(0, p * 9 - i)).toFixed(3)}"></i>`).join('');
   const INFO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M12 11v5.6"/><circle cx="12" cy="7.6" r=".9" fill="currentColor" stroke="none"/></svg>';
 
@@ -9523,7 +9610,7 @@ if (window.ResizeObserver) new ResizeObserver(() => { if (state === 'on' || stat
   }
   const savesBtn = $('#homeSaves'), lvBox = $('#g1Lvls'), newCard = $('#g1New');
   let pick = LEVELS.includes(mem.last) ? mem.last : 'easy';
-  lvBox.innerHTML = LEVELS.map((lv, k) => `<button type="button" class="g1-lv" role="radio" aria-checked="false" data-lv="${lv}"><span class="g1-tile">${FANS}${flower(k)}</span><span class="g1-lvn"></span></button>`).join('');
+  lvBox.innerHTML = LEVELS.map((lv, k) => `<button type="button" class="g1-lv" role="radio" aria-checked="false" data-lv="${lv}"><span class="g1-tile g1-k${k}">${tileArt(k)}</span><span class="g1-lvn"></span></button>`).join('');
   const lvBtns = [...lvBox.children];
   lvBtns.forEach((b) => b.addEventListener('animationend', (e) => { if (e.animationName === 'g1-sheen') b.classList.remove('g1-ring'); }));
 
@@ -9532,7 +9619,7 @@ if (window.ResizeObserver) new ResizeObserver(() => { if (state === 'on' || stat
     const k = LEVELS.indexOf(pick), st = store.stats[pick];
     lvBtns.forEach((b, j) => { const on = j === k; b.setAttribute('aria-checked', String(on)); b.tabIndex = on ? 0 : -1; b.querySelector('.g1-lvn').textContent = L.levels[LEVELS[j]]; b.setAttribute('aria-label', `${L.levels[LEVELS[j]]}, ${L.levelDesc[LEVELS[j]]}`); });
     // with all places taken, the warning can stand in for the description (where the menu has no room for a line of its own)
-    $('#g1Desc').innerHTML = `<b>${L.levels[pick]}${st && st.best ? `<small>${fmt(L.g1Best, { t: fmtTime(st.best) })}</small>` : ''}</b><span>${L.levelDesc[pick]}</span>${fullHtml ? `<i class="g1-warn">${fullHtml}</i>` : ''}`;
+    $('#g1Desc').innerHTML = `<b>${(L.g1Mood || {})[pick] || L.levels[pick]}${st && st.best ? `<small>${fmt(L.g1Best, { t: fmtTime(st.best) })}</small>` : ''}</b><span>${(L.g1Sub || {})[pick] || L.levelDesc[pick]}</span>${fullHtml ? `<i class="g1-warn">${fullHtml}</i>` : ''}`;
     go.setAttribute('aria-label', fmt(L.g1StartAria, { lvl: L.levels[pick] }));
     if (ring && !rm()) {
       const b = lvBtns[k]; b.classList.remove('g1-ring'); void b.offsetWidth; b.classList.add('g1-ring');
@@ -10769,7 +10856,7 @@ function mdWeekDays(s = mdState()) {
   });
 }
 function mdWeekHtml(s, cls = '') {
-  return `<span class="md-wk ${cls}" role="img" aria-label="${mdEsc(fmt(L.mdWeekAria, { n: mdWeekDays(s).filter((x) => x.on).length }))}">${mdWeekDays(s).map((x, k) => `<i class="${x.on ? 'on' : ''}${x.today ? ' now' : ''}" style="--k:${k}"><b>${x.d.toLocaleDateString(mdLoc(), { weekday: 'narrow' })}</b></i>`).join('')}</span>`;
+  return `<span class="md-wk ${cls}" role="img" aria-label="${mdEsc(fmt(L.mdWeekAria, { n: mdWeekDays(s).filter((x) => x.on).length }))}">${mdWeekDays(s).map((x, k) => `<i class="${x.on ? 'on' : ''}${x.today ? ' now' : ''}" style="--k:${k}"><b>${x.d.toLocaleDateString(mdLoc(), { weekday: 'short' }).replace('.', '').slice(0, 2)}</b></i>`).join('')}</span>`;
 }
 function mdNextMile(s) { const n = MD_MILES.find((x) => x > s.streak); return n ? { n, id: 's' + n, left: n - s.streak } : null; }
 // the next streak milestone, in a few words: how many more daily wins (today's included, if it is still open)

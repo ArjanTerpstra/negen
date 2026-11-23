@@ -54,7 +54,7 @@ async function enterGame(p, touch) {
       const G2 = await p.evaluate(() => JSON.parse(localStorage.getItem('negen.v1')).game);
       for (let i = 0; i < 81; i++) { if (G2.values[i]) continue; await press(p, `.cell[data-i="${i}"]`, touch); await p.keyboard.press('Digit' + G2.solution[i]); }
       await p.waitForTimeout(3200); await shot('05-win'); r.winText = (await p.textContent('#winSheet')).replace(/\s+/g, ' ').trim().slice(0, 160);
-      await press(p, '#winStatsBtn', touch); await p.waitForTimeout(600); await shot('06-stats');
+      await press(p, '#winX', touch); await p.waitForTimeout(500); await press(p, '#btnStats', touch); await p.waitForTimeout(600); await shot('06-stats'); // the win card's cross shows the board; the stats are in the header
       await p.keyboard.press('Escape'); await p.waitForTimeout(400);
       await press(p, '#btnMenu', touch); await p.waitForTimeout(600); await shot('07-settings');
       await p.keyboard.press('Escape'); await p.waitForTimeout(300);
